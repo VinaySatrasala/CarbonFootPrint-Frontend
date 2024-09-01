@@ -1,0 +1,60 @@
+<div class="page-container">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Dietary Habits</h2>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="calculateDietaryImpact()">
+  
+          <!-- Meat Category -->
+          <div class="form-group">
+            <label for="meatConsumption">Meat Consumption</label>
+            <select id="meatConsumption" [(ngModel)]="meatConsumption" name="meatConsumption" required>
+              <option value="not-had">Not Had</option>
+              <option value="light">Light Meal</option>
+              <option value="medium">Medium Meal</option>
+              <option value="heavy">Heavy Meal</option>
+            </select>
+          </div>
+  
+          <!-- Dairy Products Category -->
+          <div class="form-group">
+            <label for="dairyConsumption">Dairy Products Consumption</label>
+            <select id="dairyConsumption" [(ngModel)]="dairyConsumption" name="dairyConsumption" required>
+              <option value="not-had">Not Had</option>
+              <option value="light">Light Meal</option>
+              <option value="medium">Medium Meal</option>
+              <option value="heavy">Heavy Meal</option>
+            </select>
+          </div>
+  
+          <!-- Other Products Category with Checkboxes in Two Columns -->
+          <div class="form-group">
+            <label>Other Products Consumption</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="cereals" [(ngModel)]="cerealsSelected" name="cerealsSelected">
+                <label for="cereals">Cereals</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="pulses" [(ngModel)]="pulsesSelected" name="pulsesSelected">
+                <label for="pulses">Pulses</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="vegetables" [(ngModel)]="vegetablesSelected" name="vegetablesSelected">
+                <label for="vegetables">Vegetables</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="fruits" [(ngModel)]="fruitsSelected" name="fruitsSelected">
+                <label for="fruits">Fruits</label>
+              </div>
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary btn-block mt-4">Calculate Dietary Impact</button>
+        </form>
+  
+      </div>
+    </div>
+  </div>
+  

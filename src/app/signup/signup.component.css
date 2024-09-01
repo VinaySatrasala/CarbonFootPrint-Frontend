@@ -1,0 +1,52 @@
+
+.card {
+    border-radius: 8px;
+}
+
+.card h2 {
+    font-family: "Times New Roman", sans-serif;
+    font-size: 24px;
+}
+
+.form-control {
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.btn-success {
+    background-color: #00712D;
+    border-color: #4caf50;
+}
+.form-row{
+    display: flex;
+
+}
+
+.form-group{
+    padding: 10px;
+}
+
+label{
+    padding-bottom: 5px;
+}
+
+.body-class{
+    background-color: #00712D;
+    /* height: 100vh; */
+    width: 100%;
+    /* height: 130vh; */
+    padding: 70px;
+    font-family: 'PangeaSemiBold', sans-serif;  
+    /* margin-top: 10px solid bold black; */
+    color: #101010;
+}
+
+.line{
+    width: 75%;
+
+}
