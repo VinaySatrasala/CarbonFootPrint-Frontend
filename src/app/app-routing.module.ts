@@ -10,6 +10,7 @@ import { WasteComponent } from './waste/waste.component';
 import { FuelsComponent } from './fuels/fuels.component';
 import { TransportComponent } from './transport/transport.component';
 import { DietComponent } from './diet/diet.component';
+import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.component';
 
 const routes: Routes = [
   {path:"signup",component:SignupComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:"fuels",component:FuelsComponent},
   {path:"transport",component:TransportComponent},
   {path:"diet",component:DietComponent},
+  {path:"dashboard",component:RadialBarChartComponent}
 ];
 
 @NgModule({

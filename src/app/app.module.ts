@@ -16,6 +16,7 @@ import { WasteComponent } from './waste/waste.component';
 import { TransportComponent } from './transport/transport.component';
 import { DietComponent } from './diet/diet.component';
 import { FuelsComponent } from './fuels/fuels.component';
+import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { FuelsComponent } from './fuels/fuels.component';
     TransportComponent,
     DietComponent,
     FuelsComponent,
+    RadialBarChartComponent,
   ],
   imports: [
     BrowserModule,
