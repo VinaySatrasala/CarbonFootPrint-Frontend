@@ -69,7 +69,7 @@ export class RadialBarChartComponent {
       },
       fill: {
         type: 'solid',
-        colors: ['#FF4560']
+        colors: ['#00712D']
       },
       stroke: {
         lineCap: 'round',
@@ -82,7 +82,7 @@ export class RadialBarChartComponent {
   updateChart(comparisonType: string, chartOption: ChartOptions): void {
     const comparisonData = this.getComparisonData(comparisonType);
     chartOption.series = [comparisonData];
-    chartOption.fill.colors = comparisonData > 100 ? ['#FF4560'] : ['#00E396'];
+    chartOption.fill.colors = comparisonData > 100 ? ['#00712D'] : ['#00E396'];
   }
 
   getComparisonData(comparisonType: string): number {

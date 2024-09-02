@@ -17,7 +17,7 @@ import { TransportComponent } from './transport/transport.component';
 import { DietComponent } from './diet/diet.component';
 import { FuelsComponent } from './fuels/fuels.component';
 import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.component';
-
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.com
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
