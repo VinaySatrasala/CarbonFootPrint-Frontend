@@ -4,8 +4,11 @@
 }
 
 .card h2 {
-    font-family: "Times New Roman", sans-serif;
     font-size: 24px;
+}
+.pg-heading{
+    color: white;
+    padding-bottom: 50px;
 }
 
 .form-control {

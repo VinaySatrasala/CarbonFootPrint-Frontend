@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:"waste",component:WasteComponent},
   {path:"fuels",component:FuelsComponent},
   {path:"transport",component:TransportComponent},
-  {path:"diet",component:DietComponent}
+  {path:"diet",component:DietComponent},
 ];
 
 @NgModule({
