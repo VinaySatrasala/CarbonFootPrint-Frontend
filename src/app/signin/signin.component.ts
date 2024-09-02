@@ -1,18 +1,34 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import {
+  ObservableInput,
+  catchError,
+  subscribeOn,
+  tap,
+  throwError,
+} from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
   signinForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private httpClient: HttpClient,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.signinForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required]],
     });
   }
 
@@ -20,8 +36,17 @@ export class SigninComponent implements OnInit {
 
   onSubmit(): void {
     if (this.signinForm.valid) {
-      console.log('Sign In Successful', this.signinForm.value);
       // Handle sign-in logic here
+      let url: string = 'http://localhost:8070/api/v1/users/login';
+      this.httpClient
+        .post(url, this.signinForm.value)
+        .pipe(
+          tap((data) => {
+            this.authService.loginSuccessHandler(data as any);
+          }),
+          catchError(this.handleError)
+        )
+        .subscribe();
     } else {
       console.log('Sign In Failed');
       this.validateAllFormFields(this.signinForm);
@@ -29,9 +54,20 @@ export class SigninComponent implements OnInit {
   }
 
   validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
+    Object.keys(formGroup.controls).forEach((field) => {
       const control = formGroup.get(field);
       control?.markAsTouched({ onlySelf: true });
     });
+  }
+
+  handleError(error: HttpErrorResponse, caught: ObservableInput<any>) {
+    if (error) {
+      //redundant
+      if (error.error) console.log(error.error);
+      return throwError(() => {
+        throw new Error('something bad happened : ' + error.error);
+      });
+    }
+    return caught;
   }
 }
