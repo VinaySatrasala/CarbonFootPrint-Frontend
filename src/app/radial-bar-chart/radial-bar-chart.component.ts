@@ -23,6 +23,7 @@ export type ChartOptions = {
 })
 export class RadialBarChartComponent {
   public chartOptions: ChartOptions[];
+  msg:string ="";
 
   constructor() {
     this.chartOptions = [
@@ -87,8 +88,10 @@ export class RadialBarChartComponent {
 
   getComparisonData(comparisonType: string): number {
     if (comparisonType === 'country') {
+      this.msg="Country Vs User";
       return 80; // Example data for average country CO2e
     } else if (comparisonType === 'world') {
+      this.msg="World Vs User";
       return 70; // Example data for average world CO2e
     }
     return 0;

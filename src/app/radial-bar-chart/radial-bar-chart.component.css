@@ -18,21 +18,19 @@
     align-items: center;
   }
   
-  .btn-group-vertical {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Ensures buttons are vertically centered */
-  }
-  
+
   .btn-success {
     background-color: #00712D;
     border-color: #4caf50;
 }
 .btn{
     padding: 4px;
-    font-size: 10px;
+    font-size: 14px;
+    margin: 2px;
+    /* border-radius: ; */
 }
-
-  
-
-  
+.container{
+}
+.sbbtn{
+  border-radius: 10px;
+}

@@ -1,15 +1,15 @@
 .page-container {
-    height: 100vh;
+    height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* width: auto; */
   }
   
   .card {
     background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
     padding: 30px 20px;
     border-radius: 15px;
-    width: 350px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
     text-align: center;
   }

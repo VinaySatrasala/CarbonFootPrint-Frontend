@@ -1,0 +1,16 @@
+.emission-card {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .co2e-details {
+    width: 40%;
+  }
+  
+  .pie-chart-container {
+    width: 60%;
+  }
+  
