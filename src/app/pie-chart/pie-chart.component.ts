@@ -27,17 +27,18 @@ export class PieChartComponent {
 
   constructor() {
     this.chartOptions = {
-      series: [20, 15, 25, 10, 10, 20], // Example data for the 6 emission details
+      series: [50, 120, 324, 108, 120, 220], // Example data for the 6 emission details
       chart: {
         type: 'pie',
-        height: 300
+        height: 300,
+        width:250
       },
       labels: ['Electricity', 'Water', 'Dietary', 'Waste', 'LPG', 'Travel'],
       fill: {
         type: 'solid'
       },
       dataLabels: {
-        enabled: true
+        enabled: true,
       },
       legend: {
         position: 'bottom'
