@@ -1,6 +1,8 @@
+import { Observable } from 'rxjs';
 import { FactorsService } from './../factors.service';
 import { Component, ViewChild } from '@angular/core';
-import { airports } from 'src/assets/airports';
+import { HttpClient } from '@angular/common/http';
+// import { airports } from 'src/assets/airports'; if ts file export
 @Component({
   selector: 'app-transport',
   templateUrl: './transport.component.html',
@@ -12,7 +14,7 @@ export class TransportComponent {
   @ViewChild('privateform')
   privateform: any;
 
-  airports = airports;
+  airports: any = [];
   airportFromValid: boolean = false;
   airportToValid: boolean = false;
   selectedTab: string = 'public'; // Default tab is public transport
@@ -31,13 +33,18 @@ export class TransportComponent {
   distanceTravelled: number = 0;
   vehicleEfficiency: number = 0;
 
-  constructor(private factorsService: FactorsService) {}
+  constructor(
+    private factorsService: FactorsService,
+    private http: HttpClient
+  ) {
+    this.getJSON().subscribe((data) => {
+      this.airports = data;
+    });
+  }
 
   // Method to handle public transport submission
   submitPublicTransport() {
     // Logic to handle form submission
-    alert(this.flightFromCode);
-    alert(this.flightToCode);
     this.factorsService.putRecordIfAbsent().subscribe({
       next: (emissionID) => {
         let body = {
@@ -65,6 +72,10 @@ export class TransportComponent {
         }
       },
     });
+  }
+
+  public getJSON(): Observable<any> {
+    return this.http.get('assets/airports.json');
   }
 
   // Method to handle personal transport submission
@@ -97,7 +108,9 @@ export class TransportComponent {
   }
 
   setFlightFrom(): void {
-    let matches = this.airports.filter((elt) => this.flightFrom == elt.name);
+    let matches = this.airports.filter(
+      (elt: any) => this.flightFrom == elt.name
+    );
     if (matches && matches[0]) {
       this.flightFromCode = matches[0].code;
       this.airportFromValid = true;
@@ -105,7 +118,7 @@ export class TransportComponent {
   }
 
   setFlightTo(): void {
-    let matches = this.airports.filter((elt) => this.flightTo == elt.name);
+    let matches = this.airports.filter((elt: any) => this.flightTo == elt.name);
     if (matches && matches[0]) {
       this.flightToCode = matches[0].code;
       this.airportToValid = true;
