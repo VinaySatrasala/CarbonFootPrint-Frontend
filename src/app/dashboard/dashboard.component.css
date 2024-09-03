@@ -14,11 +14,13 @@
   .scrollable-content {
     margin-left: 30%;
     height: 100vh;
-    overflow-y: visible;
+
+    /* overflow-y: visible; */
     /* padding: 20px; */
   }
   .top-div{
     margin: 0;
+    /* width: 100vw; */
   }
   /* .avatar{
 
