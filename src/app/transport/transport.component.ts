@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { FactorsService } from './../factors.service';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-transport',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./transport.component.css']
 })
 export class TransportComponent {
+
+  @ViewChild('publicform')
+  publicform:any;
+  @ViewChild('privateform')
+  privateform:any;
+
   selectedTab: string = 'public'; // Default tab is public transport
 
   // Public Transport Variables
@@ -18,21 +25,61 @@ export class TransportComponent {
   distanceTravelled: number = 0;
   vehicleEfficiency: number = 0;
 
+  constructor(private factorsService : FactorsService){}
+
   // Method to handle public transport submission
   submitPublicTransport() {
-    console.log('Public Transport Submitted');
-    console.log('Bus Distance:', this.busDistance);
-    console.log('Train Distance:', this.trainDistance);
-    console.log('Flight Route:', this.flightRoute);
-    // Additional logic for handling public transport data
-  }
+    // Logic to handle form submission
+    this.factorsService.putRecordIfAbsent().subscribe({
+      next:(emissionID)=>{
+
+        let body = {public_transport:{
+
+        }}
+
+        if(emissionID){
+
+          this.factorsService.updateRecord('public_transport',body,emissionID).subscribe({
+            next:(success)=>{
+              if(success)
+                this.publicform.nativeElement.reset()
+            },
+            error:(err)=>{console.log(err);
+            }
+          })
+      }
+    }
+
+  })
+
+}
 
   // Method to handle personal transport submission
   submitPersonalTransport() {
-    console.log('Personal Transport Submitted');
-    console.log('Fuel Type:', this.fuelType);
-    console.log('Distance Travelled:', this.distanceTravelled);
-    console.log('Vehicle Efficiency:', this.vehicleEfficiency);
-    // Additional logic for handling personal transport data
-  }
+    // Logic to handle form submission
+    this.factorsService.putRecordIfAbsent().subscribe({
+      next:(emissionID)=>{
+
+        let body = {private_transport:{
+            fuel_type:this.fuelType,
+            travelled:this.distanceTravelled,
+            efficiency:this.vehicleEfficiency
+        }}
+
+        if(emissionID){
+
+          this.factorsService.updateRecord('private_transport',body,emissionID).subscribe({
+            next:(success)=>{
+              if(success)
+                this.privateform.nativeElement.reset()
+            },
+            error:(err)=>{console.log(err);
+           }
+          })
+      }
+    }
+
+  })
+
+}
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { FactorsService } from './../factors.service';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-diet',
@@ -15,73 +16,104 @@ export class DietComponent {
   vegetablesSelected: boolean = false;
   fruitsSelected: boolean = false;
 
-  dietaryImpact: string | null = null;
-  totalIntakeKg: number | null = null;
+
+  meatIntakeKg: number | null = null;
+  dairyIntakeKg: number | null = null;
+  otherIntakeKg: number | null = null;
+
+  @ViewChild('form')
+  form:any
+
+  constructor(private factorsService:FactorsService){}
 
   calculateDietaryImpact() {
-    let impact = '';
-    let totalKg = 0;
+
+    this.meatIntakeKg = 0
+    this.dairyIntakeKg = 0
+    this.otherIntakeKg = 0
 
     // Meat Consumption Calculation
     switch (this.meatConsumption) {
       case 'not-had':
-        impact += 'No meat intake, ';
-        totalKg += 0;
+
+        this.meatIntakeKg += 0;
         break;
       case 'light':
-        impact += 'Low meat intake, ';
-        totalKg += 0.15; // Example: 150g for light meal
+
+        this.meatIntakeKg += 0.15; // Example: 150g for light meal
         break;
       case 'medium':
-        impact += 'Moderate meat intake, ';
-        totalKg += 0.3; // Example: 300g for medium meal
+
+        this.meatIntakeKg += 0.3; // Example: 300g for medium meal
         break;
       case 'heavy':
-        impact += 'High meat intake, ';
-        totalKg += 0.5; // Example: 500g for heavy meal
+
+        this.meatIntakeKg += 0.5; // Example: 500g for heavy meal
         break;
     }
 
     // Dairy Consumption Calculation
     switch (this.dairyConsumption) {
       case 'not-had':
-        impact += 'no dairy intake, ';
-        totalKg += 0;
+        this.dairyIntakeKg += 0;
         break;
       case 'light':
-        impact += 'low dairy intake, ';
-        totalKg += 0.1; // Example: 100g for light meal
+        this.dairyIntakeKg += 0.1; // Example: 100g for light meal
         break;
       case 'medium':
-        impact += 'moderate dairy intake, ';
-        totalKg += 0.25; // Example: 250g for medium meal
+        this.dairyIntakeKg += 0.25; // Example: 250g for medium meal
         break;
       case 'heavy':
-        impact += 'high dairy intake, ';
-        totalKg += 0.4; // Example: 400g for heavy meal
+        this.dairyIntakeKg += 0.4; // Example: 400g for heavy meal
         break;
     }
 
     // Other Products Calculation
     if (this.cerealsSelected) {
-      impact += 'cereals included, ';
-      totalKg += 0.3; // Example: 300g for cereals
+      this.otherIntakeKg += 0.3; // Example: 300g for cereals
     }
     if (this.pulsesSelected) {
-      impact += 'pulses included, ';
-      totalKg += 0.2; // Example: 200g for pulses
+      this.otherIntakeKg += 0.2; // Example: 200g for pulses
     }
     if (this.vegetablesSelected) {
-      impact += 'vegetables included, ';
-      totalKg += 0.25; // Example: 250g for vegetables
+      this.otherIntakeKg += 0.25; // Example: 250g for vegetables
     }
     if (this.fruitsSelected) {
-      impact += 'fruits included, ';
-      totalKg += 0.2; // Example: 200g for fruits
+      this.otherIntakeKg += 0.2; // Example: 200g for fruits
     }
 
-    this.dietaryImpact = impact;
-    this.totalIntakeKg = totalKg;
-    alert(`Estimated Dietary Impact: ${this.dietaryImpact}\nTotal Intake: ${this.totalIntakeKg} kg`);
+
+  }
+
+
+
+  onSubmit() {
+    // Logic to handle form submission
+    this.calculateDietaryImpact()
+    this.factorsService.putRecordIfAbsent().subscribe({
+      next:(emissionID)=>{
+         let body = {dietary_habits:{
+            other_consumption:this.otherIntakeKg,
+            meat_consumption:this.meatIntakeKg,
+            dairy_consumption:this.dairyIntakeKg
+        }}
+
+        if(emissionID){
+
+          this.factorsService.updateRecord('dietary_habits',body,emissionID).subscribe({
+            next:(success)=>{
+              if(success)
+                this.form.nativeElement.reset()
+            },
+            error:(err)=>{console.log(err);
+            }
+          })
+      }
+    }
+
+  })
+
   }
 }
+
+

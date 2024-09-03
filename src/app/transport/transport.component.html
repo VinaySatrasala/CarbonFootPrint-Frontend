@@ -14,7 +14,7 @@
         </div>
       <div class="card-body">
         <!-- Public Transport Section -->
-        <div *ngIf="selectedTab === 'public'">
+        <form *ngIf="selectedTab === 'public'" #publicform>
           <h3>Public Transport</h3>
           <div class="form-group">
             <label for="busDistance">Bus Distance (km)</label>
@@ -36,17 +36,17 @@
             </div>
           </div>
           <button type="button" class="btn-submit" (click)="submitPublicTransport()">Submit Public Transport</button>
-        </div>
-  
+        </form>
+
         <!-- Personal Transport Section -->
-        <div *ngIf="selectedTab === 'personal'">
+        <form *ngIf="selectedTab === 'personal'" #privateform>
           <h3>Personal Transport</h3>
           <div class="form-group">
             <label for="fuelType">Fuel Type</label>
             <select id="fuelType" [(ngModel)]="fuelType" name="fuelType">
-              <option value="petrol">Petrol</option>
-              <option value="diesel">Diesel</option>
-              <option value="electric">Electric</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Natural Gas">Natural Gas</option>
               <!-- Add more options as needed -->
             </select>
           </div>
@@ -59,7 +59,7 @@
             <input type="number" id="vehicleEfficiency" [(ngModel)]="vehicleEfficiency" name="vehicleEfficiency">
           </div>
           <button type="button" class="btn-submit" (click)="submitPersonalTransport()">Submit Personal Transport</button>
-        </div>
+        </form>
       </div>
     </div>
   </div>

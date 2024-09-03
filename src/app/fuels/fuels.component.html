@@ -5,24 +5,23 @@
         <h2 class="card-title">Domestic Fuels</h2>
       </div>
       <div class="card-body">
-        <form (ngSubmit)="calculateFuelUsage()">
-  
+        <form (ngSubmit)="onSubmit()" #form>
+
           <div class="form-group">
             <label for="lpgUsage">LPG Usage (kg)</label>
             <input type="number" id="lpgUsage" [(ngModel)]="lpgUsage" name="lpgUsage" required>
           </div>
-  
+
           <div class="form-group">
             <label for="firewoodUsage">Firewood Usage (kg)</label>
             <input type="number" id="firewoodUsage" [(ngModel)]="firewoodUsage" name="firewoodUsage" required>
           </div>
-  
-          <button type="submit" class="btn btn-primary btn-block mt-4">Calculate Fuel Usage</button>
+
+          <button type="submit" class="btn btn-primary btn-block mt-4" [disabled]="!lpgUsage&&!firewoodUsage">Calculate Fuel Usage</button>
         </form>
-  
+
       </div>
     </div>
   </div>
 
 <app-footer></app-footer>
-  

@@ -1,3 +1,4 @@
+import { TokenInterceptorService } from './token-interceptor.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,7 @@ import { DietComponent } from './diet/diet.component';
 import { FuelsComponent } from './fuels/fuels.component';
 import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -52,7 +53,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     HttpClientModule,
 
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptors([TokenInterceptorService]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,15 +4,14 @@
       <div class="card-header">
         <h2 class="card-title">Electricity Consumption</h2>
       </div>
-      <div class="card-body">
+      <form class="card-body" #form>
         <div class="form-group">
           <label for="electricityInput">Electricity Usage (kWh)</label>
-          <input type="number" id="electricityInput" class="form-control" placeholder="Enter electricity usage" [(ngModel)] ="units">
+          <input type="number" id="electricityInput" name="electricityInput" class="form-control" placeholder="Enter electricity usage" [(ngModel)] ="units" required>
         </div>
-        <button class="btn btn-primary btn-block mt-4" (click)="onSubmit()">Submit</button>
-      </div>
+        <button class="btn btn-primary btn-block mt-4" (click)="onSubmit()" [disabled]="!units">Submit</button>
+      </form>
     </div>
   </div>
 
 <app-footer></app-footer>
-  
