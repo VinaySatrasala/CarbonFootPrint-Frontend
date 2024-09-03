@@ -18,6 +18,9 @@ import { DietComponent } from './diet/diet.component';
 import { FuelsComponent } from './fuels/fuels.component';
 import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { HttpClientModule } from '@angular/common/http';
+
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 
@@ -46,6 +49,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     FormsModule,
     ReactiveFormsModule,
     NgApexchartsModule,
+    HttpClientModule,
 
   ],
   providers: [],
