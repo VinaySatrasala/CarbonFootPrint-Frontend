@@ -12,24 +12,36 @@ import { TransportComponent } from './transport/transport.component';
 import { DietComponent } from './diet/diet.component';
 import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path:"signup",component:SignupComponent},
-  {path:"signin",component:SigninComponent},
-  {path:"",component:HomeComponent},
-  {path:"factors",component:FactorsComponent},
-  {path:"water",component:WaterComponent},
-  {path:"electricity",component:ElectricityComponent},
-  {path:"waste",component:WasteComponent},
-  {path:"fuels",component:FuelsComponent},
-  {path:"transport",component:TransportComponent},
-  {path:"diet",component:DietComponent},
-  {path:"dashboard",component:DashboardComponent},
-  {path:"graph",component:RadialBarChartComponent}
+  { path: 'signup', component: SignupComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: '', component: HomeComponent },
+  { path: 'factors', component: FactorsComponent, canActivate: [authGuard] },
+  { path: 'water', component: WaterComponent, canActivate: [authGuard] },
+  {
+    path: 'electricity',
+    component: ElectricityComponent,
+    canActivate: [authGuard],
+  },
+  { path: 'waste', component: WasteComponent, canActivate: [authGuard] },
+  { path: 'fuels', component: FuelsComponent, canActivate: [authGuard] },
+  {
+    path: 'transport',
+    component: TransportComponent,
+    canActivate: [authGuard],
+  },
+  { path: 'diet', component: DietComponent, canActivate: [authGuard] },
+  {
+    path: 'dashboard',
+    component: RadialBarChartComponent,
+    canActivate: [authGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
