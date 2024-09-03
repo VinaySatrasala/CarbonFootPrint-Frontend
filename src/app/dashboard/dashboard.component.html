@@ -1,32 +1,41 @@
 <app-header></app-header>
-<div class="d-flex top-div">
-    <div class="user-details-wrapper">
-      <div class="card user-details-card ">
-        <div class="avatar text-center pt-4">
-            <img src="assets/avatar.png" alt="">
-        </div>
-        <div>
-            <h3>Username</h3>
-            <h4>Email</h4>
-        </div>
-        <hr>
-        <div>
-            <h2>Emission Deatails:</h2>
-        </div>
+<div class="d-flex top-div" *ngIf="!loading && !errorWhenFetching">
+  <div class="user-details-wrapper">
+    <div class="card user-details-card">
+      <div class="avatar text-center pt-4">
+        <img src="assets/avatar.png" alt="" />
       </div>
-    </div>
-    <div class="scrollable-content">
-      <div class="d-flex">
-        <div class="container col-md-5  ">
-          <div class="">
-            <app-pie-chart></app-pie-chart>
-          </div>
-        </div>
-        <div class="container col-md-7">
-          <app-history></app-history>
-        </div>
+      <div>
+        <h3>Username</h3>
+        <h4>Email</h4>
       </div>
-      <app-radial-bar-chart></app-radial-bar-chart>
+      <hr />
+      <div>
+        <h2>Emission Deatails:</h2>
+      </div>
     </div>
   </div>
-  
+  <div class="scrollable-content">
+    <div class="d-flex">
+      <div class="container col-md-5">
+        <div class="">
+          <app-pie-chart
+            [emissionPerCategory]="emissionPerCategory"
+          ></app-pie-chart>
+        </div>
+      </div>
+      <div class="container col-md-7">
+        <app-history></app-history>
+      </div>
+    </div>
+    <app-radial-bar-chart></app-radial-bar-chart>
+  </div>
+</div>
+
+<div *ngIf="loading">
+  <h1>loading...</h1>
+</div>
+
+<div *ngIf="errorWhenFetching">
+  <h1>Something unexpected happened : couldn't fetch data</h1>
+</div>
