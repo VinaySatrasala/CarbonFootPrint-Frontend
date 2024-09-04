@@ -52,8 +52,8 @@ export class HistoryComponent implements OnChanges {
       ],
       chart: {
         type: 'bar',
-        height: 280,
-        // width:400
+        height: 310,
+        width: 800,
       },
       xaxis: {
         categories: [

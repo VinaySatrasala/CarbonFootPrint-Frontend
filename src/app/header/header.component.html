@@ -1,6 +1,6 @@
 <div id="top" class="maincontainer">
   <header id="home" class="header">
-    <div class="header-top navbar navbar-expand-lg bg-light">
+    <div class="header-top navbar navbar-expand-lg">
       <div class="container">
         <a [routerLink]="['']" class="navbar-brand logo"> Carbon Sense </a>
 
@@ -21,6 +21,7 @@
           <div class="d-flex align-items-center">
             <button
               class="btn btn-outline-danger header-action-btn"
+              id="logout-btn"
               aria-label="sign out"
               (click)="signOut()"
             >

@@ -1,36 +1,45 @@
 <app-header></app-header>
-<div class="d-flex top-div" *ngIf="!loading && !errorWhenFetching">
-  <div class="user-details-wrapper">
-    <div class="card user-details-card">
-      <div class="avatar text-center pt-4">
-        <img src="assets/avatar.png" alt="" />
-      </div>
-      <div>
-        <p>Username</p>
-      </div>
-      <hr />
-      <div>
-        <h5>Emission Deatails:</h5>
-      </div>
+
+<div class="d-container" *ngIf="!loading && !errorWhenFetching">
+  <div class="sidebar"></div>
+
+  <div class="imp-card pie">
+    <app-pie-chart [emissionPerCategory]="emissionPerCategory"></app-pie-chart>
+  </div>
+  <div class="imp-card bar">
+    <app-history [emissionRecords]="emissionRecords"></app-history>
+  </div>
+  <div class="imp-card electricity">
+    <p>kwh used : </p>
+  </div>
+  <div class="imp-card water">
+    <p>litres used : </p>
+  </div>
+  <div class="imp-card fuel">
+    <p>lpg used : </p>
+    <p>firewood : </p>
+  </div>
+  <div class="imp-card travel">
+    <div class="public-transport">
+      <p>public transport</p>
+      <p>bus :</p>
+      <p>train :</p>
+      <p>flight :</p>
+    </div>
+
+    <div class="private-transport">
+      <p>pivate transport :</p>
+      <p>distance travelled :</p>
     </div>
   </div>
-  <div class="scrollable-content">
-    <div class="d-flex">
-      <div class="container col-md-5">
-        <div class="">
-          <app-pie-chart
-            [emissionPerCategory]="emissionPerCategory"
-          ></app-pie-chart>
-        </div>
-      </div>
-      <div class="container col-md-7">
-        <app-history [emissionRecords]="emissionRecords"></app-history>
-      </div>
-    </div>
-    <app-radial-bar-chart
-      [emissionPerCategory]="emissionPerCategory"
-      [avgPersonPerCountryCO2]="avgPersonPerCountryCO2"
-    ></app-radial-bar-chart>
+  <div class="imp-card dietary">
+    <p>meat consumption :</p>
+    <p>dairy consumption :</p>
+    <p>others :</p>
+  </div>
+  <div class="imp-card waste">
+    <p>recyclable waste :</p>
+    <p>non-recyclable waste :</p>
   </div>
 </div>
 
@@ -41,3 +50,43 @@
 <div *ngIf="errorWhenFetching">
   <h1>Something unexpected happened : couldn't fetch data</h1>
 </div>
+
+<!-- 
+<div
+  class="d-flex top-div dashboard-container"
+  *ngIf="!loading && !errorWhenFetching"
+>
+  <div class="user-details-wrapper">
+    <div class="user-details-card">
+      <div class="avatar text-center pt-4">
+        <img src="assets/avatar.png" id="" alt="" />
+      </div>
+      <div>
+        <p>Username</p>
+      </div>
+      <hr />
+      <div>
+        <p>Emission Deatails:</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollable-content">
+    <div class="d-flex">
+      <div class="container">
+        <div class="">
+          <app-pie-chart
+            [emissionPerCategory]="emissionPerCategory"
+          ></app-pie-chart>
+        </div>
+      </div>
+      <div class="container">
+        <app-history [emissionRecords]="emissionRecords"></app-history>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <app-radial-bar-chart
+      [emissionPerCategory]="emissionPerCategory"
+      [avgPersonPerCountryCO2]="avgPersonPerCountryCO2"
+    ></app-radial-bar-chart> -->

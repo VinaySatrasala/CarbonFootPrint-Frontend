@@ -34,8 +34,8 @@ export class PieChartComponent implements OnChanges {
       series: [0, 0, 0, 0, 0, 0],
       chart: {
         type: 'pie',
-        height: 300,
-        width: 250,
+        height: 320,
+        width: 300,
       },
       labels: [
         'Electricity',
