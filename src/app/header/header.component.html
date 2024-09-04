@@ -1,35 +1,34 @@
 <div id="top" class="maincontainer">
   <header id="home" class="header">
-
     <div class="header-top navbar navbar-expand-lg bg-light">
       <div class="container">
-
-
-        <a [routerLink]="['']" class="navbar-brand logo">
-          Carbon Sense
-        </a>
+        <a [routerLink]="['']" class="navbar-brand logo"> Carbon Sense </a>
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto navbar-list">
             <li class="nav-item">
-              <a class="nav-link navbar-link" [routerLink]="['/dashboard']">Dashboard</a>
+              <a class="nav-link navbar-link" [routerLink]="['/dashboard']"
+                >Dashboard</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link navbar-link" [routerLink]="['/factors']">Categories</a>
+              <a class="nav-link navbar-link" [routerLink]="['/factors']"
+                >Categories</a
+              >
             </li>
           </ul>
 
           <div class="d-flex align-items-center">
-
-            <button *ngIf="isLoggedIn" class="btn btn-outline-danger header-action-btn" aria-label="sign out" (click)="signOut()">logout
-            </button>
-            <button *ngIf="!isLoggedIn" class="btn btn-outline-success header-action-btn" routerLink="/signin">
-              Sign In
+            <button
+              class="btn btn-outline-danger header-action-btn"
+              aria-label="sign out"
+              (click)="signOut()"
+            >
+              logout
             </button>
           </div>
         </div>
       </div>
     </div>
-
   </header>
 </div>

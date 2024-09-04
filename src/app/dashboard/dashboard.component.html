@@ -24,10 +24,13 @@
         </div>
       </div>
       <div class="container col-md-7">
-        <app-history></app-history>
+        <app-history [emissionRecords]="emissionRecords"></app-history>
       </div>
     </div>
-    <app-radial-bar-chart></app-radial-bar-chart>
+    <app-radial-bar-chart
+      [emissionPerCategory]="emissionPerCategory"
+      [avgPersonPerCountryCO2]="avgPersonPerCountryCO2"
+    ></app-radial-bar-chart>
   </div>
 </div>
 

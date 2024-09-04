@@ -16,6 +16,9 @@ export class DashboardComponent implements OnInit {
   errorWhenFetching: boolean = false;
   errorMessage: string = '';
   emissionPerCategory: any = {};
+  countryRecords: any = [];
+  emissionRecords!: any;
+  avgPersonPerCountryCO2!: number;
 
   ngOnInit(): void {
     this.fatcorsService.fetchCurrentMonthData().subscribe({
@@ -33,6 +36,33 @@ export class DashboardComponent implements OnInit {
         this.errorMessage = err.error ? err.error : '';
       },
     });
+
+    this.fatcorsService.getCountryRecords().subscribe({
+      next: (response) => {
+        if (response) {
+          this.countryRecords = response;
+          this.extractAvgPersonPerCountryCO2();
+        }
+      },
+      error: (err) => {
+        console.error(
+          "couldn't fetch avg emission per capita per country : " + err
+        );
+      },
+    });
+
+    this.fatcorsService.fetchAllUserRecords().subscribe({
+      next: (response) => {
+        if (response) {
+          this.emissionRecords = response;
+        }
+      },
+      error: (err) => {
+        console.error(
+          "couldn't emission records for the user /history : " + err
+        );
+      },
+    });
   }
 
   extractEmissionsPerCategory(): void {
@@ -41,6 +71,16 @@ export class DashboardComponent implements OnInit {
         this.emissionPerCategory[key] = this.record[key].emission;
     });
     this.emissionPerCategory = Object.assign({}, this.emissionPerCategory);
-    console.log(this.emissionPerCategory);
+    // console.log(this.emissionPerCategory);
+  }
+
+  extractAvgPersonPerCountryCO2(): void {
+    if (sessionStorage.getItem('country'))
+      this.avgPersonPerCountryCO2 =
+        (this.countryRecords.filter(
+          (elt: any) => elt['Country'] == sessionStorage.getItem('country')
+        )[0]['2021'] *
+          1000) /
+        12;
   }
 }

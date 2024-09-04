@@ -117,7 +117,31 @@ export class FactorsService {
     return emissionRecord;
   }
 
-  getCountryRecords():Observable<any>{
-    return this.httpClient.get("assets/emissionPerCapita.json")
+  getCountryRecords(): Observable<any> {
+    return this.httpClient.get('assets/emissionPerCapita.json');
+  }
+
+  fetchAllUserRecords(): Observable<any> {
+    let url;
+    let emissionRecords = new Subject<any>();
+    const userID = sessionStorage.getItem('userID');
+    if (userID) {
+      url = `http://localhost:8070/api/v1/emissions/${userID}`;
+      this.httpClient.get(url).subscribe({
+        next: (response) => {
+          if (response) emissionRecords.next(response);
+        },
+        error: (e) => {
+          console.error(e);
+          throwError(() => {
+            new Error(e);
+          });
+        },
+        complete: () => {
+          /**console.info('complete')**/
+        },
+      });
+    }
+    return emissionRecords;
   }
 }
