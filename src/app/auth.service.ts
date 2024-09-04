@@ -24,4 +24,10 @@ export class AuthService {
     const userID = sessionStorage.getItem('userID');
     return token != null && userID != null;
   }
+
+  logout():void{
+    sessionStorage.removeItem('token')
+    sessionStorage.removeItem('userID')
+    this.router.navigate(['/']);
+  }
 }

@@ -1,78 +1,119 @@
-import { catchError, Observable, ObservableInput, Subject, throwError } from 'rxjs';
+import {
+  catchError,
+  Observable,
+  ObservableInput,
+  Subject,
+  throwError,
+} from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FactorsService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient:HttpClient) {
-   }
-
-
-     putRecordIfAbsent():Observable<string|null>{
-     let url;
-     let emissionIDSource = new Subject<string>();
-     const userID = sessionStorage.getItem('userID')
-     let year = new Date().getFullYear();
-     let month:string|number = new Date().getMonth();
-     month++;
-     if(month<10)
-      month = '0'+month;
-     let date = `${year}-${month}`;
-     if(userID){
-
-      url = `http://localhost:8070/api/v1/emissions/${userID}/${date}`
+  /**checks if current user already has an emission record for current month
+   *if yes,returns the record id; else creates a new record and returns the id **/
+  putRecordIfAbsent(): Observable<string | null> {
+    let url;
+    let emissionIDSource = new Subject<string>();
+    const userID = sessionStorage.getItem('userID');
+    let year = new Date().getFullYear();
+    let month: string | number = new Date().getMonth();
+    month++;
+    if (month < 10) month = '0' + month;
+    let date = `${year}-${month}`;
+    if (userID) {
+      url = `http://localhost:8070/api/v1/emissions/${userID}/${date}`;
       this.httpClient.get(url).subscribe({
         next: (response) => {
-          if(!response){
-            url = "http://localhost:8070/api/v1/emissions"
-            let body = {userID:userID,date:date}
-             this.httpClient.post(url,body).subscribe({
-              next:(response)=>{
-                emissionIDSource.next((response as any)['id'])
-
-             },
+          if (!response) {
+            url = 'http://localhost:8070/api/v1/emissions';
+            let body = { userID: userID, date: date };
+            this.httpClient.post(url, body).subscribe({
+              next: (response) => {
+                emissionIDSource.next((response as any)['id']);
+              },
               error: (e) => console.error(e),
-              complete: () => {/**console.info('complete')**/}
-            })
+              complete: () => {
+                /**console.info('complete')**/
+              },
+            });
+          } else {
+            emissionIDSource.next((response as any)['id']);
           }
-          else{
-            emissionIDSource.next((response as any)['id'])
-
-          }
-
         },
-        error: (e) => {console.error(e)
-          throwError(()=>{
-            new Error(e)
-          })},
-        complete: () => {/**console.info('complete')**/}
-    })
-    }
-     return emissionIDSource;
-   }
-
-
-   updateRecord(category:string,body:any,emissionID:string):Observable<boolean>{
-      let url = `http://localhost:8070/api/v1/emissions/${emissionID}/cumulate/${category}`
-      let success = new Subject<boolean>()
-      this.httpClient.put(url,body).subscribe({
-        next:(response) => {
-          if(response)
-            success.next(true);
+        error: (e) => {
+          console.error(e);
+          throwError(() => {
+            new Error(e);
+          });
         },
-        error: (e) => {console.error(e)
-          throwError(()=>{
-            new Error(e)
-        })},
         complete: () => {
           /**console.info('complete')**/
-          success.next(true);
-        }
-      })
+        },
+      });
+    }
+    return emissionIDSource;
+  }
 
-      return success;
-   }
+  /** for cumulatively updating consumption n emission details in any category */
+  updateRecord(
+    category: string,
+    body: any,
+    emissionID: string
+  ): Observable<boolean> {
+    let url = `http://localhost:8070/api/v1/emissions/${emissionID}/cumulate/${category}`;
+    let success = new Subject<boolean>();
+    this.httpClient.put(url, body).subscribe({
+      next: (response) => {
+        if (response) success.next(true);
+      },
+      error: (e) => {
+        console.error(e);
+        throwError(() => {
+          new Error(e);
+        });
+      },
+      complete: () => {
+        /**console.info('complete')**/
+        success.next(true);
+      },
+    });
+
+    return success;
+  }
+
+  //fetch current month emission data
+  fetchCurrentMonthData(): Observable<string | null> {
+    let url;
+    let emissionRecord = new Subject<any>();
+    const userID = sessionStorage.getItem('userID');
+    let year = new Date().getFullYear();
+    let month: string | number = new Date().getMonth();
+    month++;
+    if (month < 10) month = '0' + month;
+    let date = `${year}-${month}`;
+
+    if (userID) {
+      url = `http://localhost:8070/api/v1/emissions/${userID}/${date}`;
+      this.httpClient.get(url).subscribe({
+        next: (response) => {
+          if (response) emissionRecord.next(response);
+        },
+        error: (e) => {
+          console.error(e);
+          throwError(() => {
+            new Error(e);
+          });
+        },
+        complete: () => {
+          /**console.info('complete')**/
+        },
+      });
+    }
+    return emissionRecord;
+  }
 }
