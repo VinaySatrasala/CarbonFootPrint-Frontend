@@ -6,52 +6,50 @@
     display: flex;
     flex-direction: column;
   }
-  
+
   .navbar {
     padding: 15px 30px;
   }
-  
+
   .navbar .navbar-brand h1 {
     font-family: 'PangeaSemiBold', sans-serif;
     font-size: 28px;
     color: #00712D;
     margin: 0;
   }
-  
+
   .navbar .nav-link {
     font-size: 16px;
     color: #00712D !important;
   }
-  
+
   .intro-section {
-    background-color: #00712D;
-    color: white;
+    color: black;
     padding: 100px 20px;
     flex: 1;
   }
-  
+
   .intro-text h2 {
     font-size: 48px;
     margin-bottom: 20px;
   }
-  
+
   .intro-text p {
     font-size: 20px;
     margin-bottom: 40px;
   }
-  
+
   .footer {
     background-color: #f8f9fa;
     padding: 20px;
     border-top: 1px solid #ddd;
   }
-  
+
   .footer .text-muted {
     font-size: 14px;
     margin-bottom: 10px;
   }
-  
+
   .footer .list-inline-item a {
     font-size: 14px;
   }
-  

@@ -116,4 +116,8 @@ export class FactorsService {
     }
     return emissionRecord;
   }
+
+  getCountryRecords():Observable<any>{
+    return this.httpClient.get("assets/emissionPerCapita.json")
+  }
 }
