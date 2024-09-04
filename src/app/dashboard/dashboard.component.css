@@ -14,11 +14,13 @@
   .scrollable-content {
     margin-left: 30%;
     height: 100vh;
-    overflow-y: visible;
+
+    /* overflow-y: visible; */
     /* padding: 20px; */
   }
   .top-div{
     margin: 0;
+    /* width: 100vw; */
   }
   /* .avatar{
 
@@ -26,4 +28,8 @@
   img{
     width: 50%;
     height: 100%;
+  }
+  .header.div{
+    scroll-behavior: smooth;
+    
   }

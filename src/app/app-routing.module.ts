@@ -13,12 +13,15 @@ import { DietComponent } from './diet/diet.component';
 import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './auth.guard';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: '', component: HomeComponent },
-  { path: 'factors', component: FactorsComponent, canActivate: [authGuard] },
+  { path: 'factors', component: FactorsComponent
+    // , canActivate: [authGuard] 
+  },
   { path: 'water', component: WaterComponent, canActivate: [authGuard] },
   {
     path: 'electricity',
@@ -35,9 +38,9 @@ const routes: Routes = [
   { path: 'diet', component: DietComponent, canActivate: [authGuard] },
   {
     path: 'dashboard',
-    component: RadialBarChartComponent,
-    canActivate: [authGuard],
-  },
+    component: DashboardComponent
+    // canActivate: [authGuard],
+  }
 ];
 
 @NgModule({
