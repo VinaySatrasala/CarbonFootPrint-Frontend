@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { FactorsService } from './../factors.service';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-waste',
@@ -6,13 +7,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./waste.component.css']
 })
 export class WasteComponent {
-  recyclableWaste: number=0; // Variable to store recyclable waste input
-  nonRecyclableWaste: number=0; // Variable to store non-recyclable waste input
+  recyclableWaste!: number; // Variable to store recyclable waste input
+  nonRecyclableWaste!: number; // Variable to store non-recyclable waste input
+
+  @ViewChild('form')
+  form:any;
+
+  constructor(private factorsService:FactorsService){}
 
   onSubmit() {
-    // Handle form submission logic
-    console.log('Recyclable Waste:', this.recyclableWaste, 'Kilos');
-    console.log('Non-Recyclable Waste:', this.nonRecyclableWaste, 'Kilos');
-    alert(`Recyclable: ${this.recyclableWaste} Kilos, Non-Recyclable: ${this.nonRecyclableWaste} Kilos`);
+    // Logic to handle form submission
+
+    this.factorsService.putRecordIfAbsent().subscribe({
+      next:(emissionID)=>{
+         let body = {waste:{
+            recyclable_waste : this.recyclableWaste,
+            non_recyclable_waste:this.nonRecyclableWaste
+        }}
+
+        if(emissionID){
+
+          this.factorsService.updateRecord('waste',body,emissionID).subscribe({
+            next:(success)=>{
+              if(success)
+                this.form.nativeElement.reset()
+            },
+            error:(err)=>{console.log(err);
+            }
+          })
+      }
+    }
+
+  })
+
   }
 }

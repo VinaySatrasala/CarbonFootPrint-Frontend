@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { FactorsService } from './../factors.service';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-fuels',
@@ -6,12 +7,44 @@ import { Component } from '@angular/core';
   styleUrls: ['./fuels.component.css']
 })
 export class FuelsComponent {
-  lpgUsage: number = 0;
-  firewoodUsage: number = 0;
+  lpgUsage!: number;
+  firewoodUsage!: number;
   estimatedFuelUsage: number | null = null;
+
+  @ViewChild('form')
+  form:any
 
   calculateFuelUsage() {
     this.estimatedFuelUsage = this.lpgUsage + this.firewoodUsage;
-    alert("Estimated Monthly Fuel Usage: " + this.estimatedFuelUsage + " kg");
+  }
+
+  constructor(private factorsService:FactorsService){}
+
+  onSubmit() {
+    // Logic to handle form submission
+
+    this.factorsService.putRecordIfAbsent().subscribe({
+      next:(emissionID)=>{
+         let body = {fuel_sources:{
+            lpg : this.lpgUsage,
+            firewood:this.firewoodUsage
+        }}
+
+        if(emissionID){
+
+          this.factorsService.updateRecord('fuel_sources',body,emissionID).subscribe({
+            next:(success)=>{
+              if(success)
+                this.form.nativeElement.reset()
+            },
+            error:(err)=>{console.log(err);
+            }
+          })
+      }
+    }
+
+  })
+
   }
 }
+

@@ -1,0 +1,59 @@
+.maincontainer {
+  font-size: 16px; /* Increased the base font size */
+  font-weight: bold;
+}
+
+.header * {
+  color: #fff !important;
+}
+
+#logout-btn:hover {
+  background-color: #ac0112 !important;
+}
+
+.navbar {
+  background-color: #252733;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 24px; /* Increased the font size of the logo */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-link {
+  font-size: 18px; /* Increased the font size of the navbar links */
+
+  padding: 10px 15px;
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+  color: green; /* Optional: Add a hover color */
+}
+
+.header-action-btn {
+  font-size: 18px; /* Increased the font size of the action buttons */
+  margin-left: 15px;
+  background-color: #dc3545 !important;
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-danger,
+.btn-outline-success {
+  font-size: 18px; /* Ensure the buttons have a consistent font size */
+}
+
+@media (min-width: 992px) {
+  .navbar .navbar-nav {
+    margin-left: auto; /* Ensures the navbar links are aligned to the right */
+  }
+
+  .header-top .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

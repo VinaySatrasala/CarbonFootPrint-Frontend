@@ -1,67 +1,144 @@
 <app-header></app-header>
 <div class="page-container">
-    <div class="card">
-      <div class="card-header">
-        <h2 class="card-title">Transport</h2>
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Transport</h2>
     </div>
-        <div class="btn-group">
-          <button type="button" class="btn" [class.active]="selectedTab === 'public'" (click)="selectedTab = 'public'">
-            Public Transport
-          </button>
-          <button type="button" class="btn" [class.active]="selectedTab === 'personal'" (click)="selectedTab = 'personal'">
-            Personal Transport
-          </button>
+    <div class="btn-group">
+      <button
+        type="button"
+        class="btn"
+        [class.active]="selectedTab === 'public'"
+        (click)="selectedTab = 'public'"
+      >
+        Public Transport
+      </button>
+      <button
+        type="button"
+        class="btn"
+        [class.active]="selectedTab === 'personal'"
+        (click)="selectedTab = 'personal'"
+      >
+        Personal Transport
+      </button>
+    </div>
+    <div class="card-body">
+      <!-- Public Transport Section -->
+      <form *ngIf="selectedTab === 'public'" #publicform>
+        <h3>Public Transport</h3>
+        <div class="form-group">
+          <label for="busDistance">Bus Distance (km)</label>
+          <input
+            type="number"
+            id="busDistance"
+            [(ngModel)]="busDistance"
+            name="busDistance"
+          />
         </div>
-      <div class="card-body">
-        <!-- Public Transport Section -->
-        <div *ngIf="selectedTab === 'public'">
-          <h3>Public Transport</h3>
-          <div class="form-group">
-            <label for="busDistance">Bus Distance (km)</label>
-            <input type="number" id="busDistance" [(ngModel)]="busDistance" name="busDistance">
-          </div>
-          <div class="form-group">
-            <label for="trainDistance">Train Distance (km)</label>
-            <input type="number" id="trainDistance" [(ngModel)]="trainDistance" name="trainDistance">
-          </div>
-          <div class="form-group">
-            <label for="flightRoute">Flight Route</label>
-            <div class="select-group">
-                <select id="flightRoute" [(ngModel)]="flightRoute" name="flightRoute">
-                    <!-- Add more options as needed -->
-                  </select>
-                  <select id="flightRoute" [(ngModel)]="flightRoute" name="flightRoute">
-                      <!-- Add more options as needed -->
-                    </select>
-            </div>
-          </div>
-          <button type="button" class="btn-submit" (click)="submitPublicTransport()">Submit Public Transport</button>
+        <div class="form-group">
+          <label for="trainDistance">Train Distance (km)</label>
+          <input
+            type="number"
+            id="trainDistance"
+            [(ngModel)]="trainDistance"
+            name="trainDistance"
+          />
         </div>
-  
-        <!-- Personal Transport Section -->
-        <div *ngIf="selectedTab === 'personal'">
-          <h3>Personal Transport</h3>
-          <div class="form-group">
-            <label for="fuelType">Fuel Type</label>
-            <select id="fuelType" [(ngModel)]="fuelType" name="fuelType">
-              <option value="petrol">Petrol</option>
-              <option value="diesel">Diesel</option>
-              <option value="electric">Electric</option>
-              <!-- Add more options as needed -->
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="distanceTravelled">Distance Travelled (km)</label>
-            <input type="number" id="distanceTravelled" [(ngModel)]="distanceTravelled" name="distanceTravelled">
-          </div>
-          <div class="form-group">
-            <label for="vehicleEfficiency">Vehicle Efficiency (km/l)</label>
-            <input type="number" id="vehicleEfficiency" [(ngModel)]="vehicleEfficiency" name="vehicleEfficiency">
-          </div>
-          <button type="button" class="btn-submit" (click)="submitPersonalTransport()">Submit Personal Transport</button>
+        <div class="form-group">
+          <label>Do you want to add any flight details?</label>
+          <select [(ngModel)]="hadFlight" name="hadFlight" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
         </div>
-      </div>
+        <div class="form-group" *ngIf="hadFlight == 'yes'">
+          <label for="flightTo">Flight To</label>
+          <div class="select-group">
+            <input
+              list="airports"
+              name="flightTo"
+              id="flightTo"
+              [(ngModel)]="flightTo"
+              (input)="setFlightTo()"
+            />
+            <datalist id="airports">
+              <option
+                *ngFor="let airport of airports"
+                value="{{ airport.name }}"
+              ></option>
+            </datalist>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="hadFlight == 'yes'">
+          <label for="flightFrom">Flight From</label>
+          <div class="select-group">
+            <input
+              list="airports"
+              name="flightFrom"
+              id="flightFrom"
+              [(ngModel)]="flightFrom"
+              (input)="setFlightFrom()"
+            />
+            <datalist id="airports">
+              <option
+                *ngFor="let airport of airports"
+                value="{{ airport.name }}"
+              ></option>
+            </datalist>
+          </div>
+        </div>
+        <button
+          [disabled]="
+            (!airportFromValid || !airportToValid) && hadFlight == 'yes'
+          "
+          type="button"
+          class="btn btn-submit"
+          (click)="submitPublicTransport()"
+        >
+          Submit Public Transport
+        </button>
+      </form>
+
+      <!-- Personal Transport Section -->
+      <form *ngIf="selectedTab === 'personal'" #privateform>
+        <h3>Personal Transport</h3>
+        <div class="form-group">
+          <label for="fuelType">Fuel Type</label>
+          <select id="fuelType" [(ngModel)]="fuelType" name="fuelType">
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Natural Gas">Natural Gas</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="distanceTravelled">Distance Travelled (km)</label>
+          <input
+            type="number"
+            id="distanceTravelled"
+            [(ngModel)]="distanceTravelled"
+            name="distanceTravelled"
+          />
+        </div>
+        <div class="form-group">
+          <label for="vehicleEfficiency">Vehicle Efficiency (km/l)</label>
+          <input
+            type="number"
+            id="vehicleEfficiency"
+            [(ngModel)]="vehicleEfficiency"
+            name="vehicleEfficiency"
+          />
+        </div>
+        <button
+          type="button"
+          class="btn-submit"
+          (click)="submitPersonalTransport()"
+        >
+          Submit Personal Transport
+        </button>
+      </form>
     </div>
   </div>
+</div>
 
-  <app-footer></app-footer>
+<app-footer></app-footer>

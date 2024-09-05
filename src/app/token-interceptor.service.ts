@@ -1,27 +1,32 @@
 import {
   HttpEvent,
   HttpHandler,
+  HttpHandlerFn,
   HttpInterceptor,
+  HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class TokenInterceptorService implements HttpInterceptor {
-  constructor() {}
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    if (!req.url.endsWith('login') && !req.url.endsWith('signup')) {
-      const token = sessionStorage.getItem('token');
-      if (token) {
-        req = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
-      }
+export const TokenInterceptorService: HttpInterceptorFn = (
+  req: HttpRequest<any>,
+  next: HttpHandlerFn
+): Observable<HttpEvent<any>> => {
+
+    const token : string|null = sessionStorage.getItem('token');
+    if(!req.url.endsWith("login") && !req.url.endsWith("signup")){
+    if (token) {
+      const cloned = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return next(cloned);
     }
-    return next.handle(req);
+
   }
-}
+      return next(req);
+
+};
+

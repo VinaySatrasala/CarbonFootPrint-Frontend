@@ -1,24 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <h1 class="logo">CarbonSense</h1>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/signin">Sign In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/signup">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
+<div id="top" class="maincontainer">
+  <header id="home" class="header">
+    <div class="header-top navbar navbar-expand-lg">
+      <div class="container">
+        <a [routerLink]="['']" class="navbar-brand logo"> Carbon Sense </a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto navbar-list">
+            <li class="nav-item">
+              <a class="nav-link navbar-link" [routerLink]="['/dashboard']"
+                >Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navbar-link" [routerLink]="['/factors']"
+                >Categories</a
+              >
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center">
+            <button
+              class="btn btn-outline-danger header-action-btn"
+              id="logout-btn"
+              aria-label="sign out"
+              (click)="signOut()"
+            >
+              logout
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  </nav>
+  </header>
+</div>

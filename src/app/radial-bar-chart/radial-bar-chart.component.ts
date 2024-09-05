@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
   ApexNonAxisChartSeries,
   ApexPlotOptions,
   ApexChart,
   ApexFill,
-  ApexStroke
+  ApexStroke,
 } from 'ng-apexcharts';
 
 export type ChartOptions = {
@@ -19,21 +19,42 @@ export type ChartOptions = {
 @Component({
   selector: 'app-radial-bar-chart',
   templateUrl: './radial-bar-chart.component.html',
-  styleUrls: ['./radial-bar-chart.component.css']
+  styleUrls: ['./radial-bar-chart.component.css'],
 })
-export class RadialBarChartComponent {
+export class RadialBarChartComponent implements OnChanges {
   public chartOptions: ChartOptions[];
-  msg:string ="";
+  msg: string = '';
+  comparisonMode: 'country' | 'world' = 'world';
+  avgPersonPerWorldCO2: number = 4700 / 12;
+
+  @Input()
+  avgPersonPerCountryCO2!: number;
+  @Input()
+  emissionPerCategory!: any;
 
   constructor() {
     this.chartOptions = [
-      this.createChartOption(75, 'Electricity'),
-      this.createChartOption(60, 'Water'),
-      this.createChartOption(85, 'Dietary'),
-      this.createChartOption(50, 'Waste'),
-      this.createChartOption(40, 'LPG'),
-      this.createChartOption(90, 'Travel')
+      this.createChartOption(0, 'Electricity'),
+      this.createChartOption(0, 'Water'),
+      this.createChartOption(0, 'Dietary'),
+      this.createChartOption(0, 'Waste'),
+      this.createChartOption(0, 'LPG'),
+      this.createChartOption(0, 'Travel'),
     ];
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.avgPersonPerCountryCO2 && this.emissionPerCategory) {
+      let electricity = 0;
+      this.chartOptions = [
+        this.createChartOption(0, 'Electricity'),
+        this.createChartOption(0, 'Water'),
+        this.createChartOption(0, 'Dietary'),
+        this.createChartOption(0, 'Waste'),
+        this.createChartOption(0, 'LPG'),
+        this.createChartOption(0, 'Travel'),
+      ];
+    }
   }
 
   createChartOption(seriesValue: number, label: string): ChartOptions {
@@ -63,20 +84,20 @@ export class RadialBarChartComponent {
             },
             value: {
               show: true,
-              color:'#888'
-            }
-          }
-        }
+              color: '#888',
+            },
+          },
+        },
       },
       fill: {
         type: 'solid',
-        colors: ['#00712D']
+        colors: ['#00712D'],
       },
       stroke: {
         lineCap: 'round',
-        width:5
+        width: 5,
       },
-      labels: [label]
+      labels: [label],
     };
   }
 
@@ -88,10 +109,10 @@ export class RadialBarChartComponent {
 
   getComparisonData(comparisonType: string): number {
     if (comparisonType === 'country') {
-      this.msg="Country Vs User";
+      this.msg = 'Country Vs User';
       return 80; // Example data for average country CO2e
     } else if (comparisonType === 'world') {
-      this.msg="World Vs User";
+      this.msg = 'World Vs User';
       return 70; // Example data for average world CO2e
     }
     return 0;

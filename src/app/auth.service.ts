@@ -10,12 +10,15 @@ export class AuthService {
   loginSuccessHandler({
     token,
     userID,
+    country,
   }: {
     token: string;
     userID: string;
+    country: string;
   }): void {
     sessionStorage.setItem('token', token);
     sessionStorage.setItem('userID', userID);
+    sessionStorage.setItem('country', country);
     this.router.navigate(['/factors']);
   }
 
@@ -23,5 +26,11 @@ export class AuthService {
     const token = sessionStorage.getItem('token');
     const userID = sessionStorage.getItem('userID');
     return token != null && userID != null;
+  }
+
+  logout(): void {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('userID');
+    this.router.navigate(['/']);
   }
 }

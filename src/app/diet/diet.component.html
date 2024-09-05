@@ -5,8 +5,8 @@
         <h2 class="card-title">Dietary Habits</h2>
       </div>
       <div class="card-body">
-        <form (ngSubmit)="calculateDietaryImpact()">
-  
+        <form (ngSubmit)="onSubmit()" #form>
+
           <!-- Meat Category -->
           <div class="form-group">
             <label for="meatConsumption">Meat Consumption</label>
@@ -17,7 +17,7 @@
               <option value="heavy">Heavy Meal</option>
             </select>
           </div>
-  
+
           <!-- Dairy Products Category -->
           <div class="form-group">
             <label for="dairyConsumption">Dairy Products Consumption</label>
@@ -28,7 +28,7 @@
               <option value="heavy">Heavy Meal</option>
             </select>
           </div>
-  
+
           <!-- Other Products Category with Checkboxes in Two Columns -->
           <div class="form-group">
             <label>Other Products Consumption</label>
@@ -51,10 +51,10 @@
               </div>
             </div>
           </div>
-  
+
           <button type="submit" class="btn btn-primary btn-block mt-4">Calculate Dietary Impact</button>
         </form>
-  
+
       </div>
     </div>
   </div>

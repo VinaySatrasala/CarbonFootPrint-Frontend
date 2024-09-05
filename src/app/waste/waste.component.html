@@ -4,19 +4,18 @@
       <div class="card-header">
         <h2 class="card-title">Waste Details</h2>
       </div>
-      <div class="card-body">
+      <form class="card-body" #form>
         <div class="form-group">
           <label for="recyclableInput">Recyclable Waste (Kilos)</label>
-          <input type="number" id="recyclableInput" class="form-control" placeholder="Enter recyclable waste" [(ngModel)]="recyclableWaste">
+          <input type="number" id="recyclableInput" name="recyclableInput" class="form-control" placeholder="Enter recyclable waste" [(ngModel)]="recyclableWaste">
         </div>
         <div class="form-group mt-3">
           <label for="nonRecyclableInput">Non-Recyclable Waste (Kilos)</label>
-          <input type="number" id="nonRecyclableInput" class="form-control" placeholder="Enter non-recyclable waste" [(ngModel)]="nonRecyclableWaste">
+          <input type="number" id="nonRecyclableInput" name="nonRecyclableInput" class="form-control" placeholder="Enter non-recyclable waste" [(ngModel)]="nonRecyclableWaste">
         </div>
-        <button class="btn btn-primary btn-block mt-4" (click)="onSubmit()">Submit</button>
-      </div>
+        <button class="btn btn-primary btn-block mt-4" (click)="onSubmit()" [disabled]="!nonRecyclableWaste&&!recyclableWaste">Submit</button>
+      </form>
     </div>
   </div>
 
   <app-footer></app-footer>
-  

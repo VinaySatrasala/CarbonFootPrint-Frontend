@@ -1,18 +1,15 @@
 <div class="card emission-card">
-    <div class="card-body ">
-      <div class="co2e-details text-center">
-        <h6>Total CO2e Emissions : 209</h6>
-      </div>
-      <div class="pie-chart-container">
-        <apx-chart
-          [series]="chartOptions.series"
-          [chart]="chartOptions.chart"
-          [labels]="chartOptions.labels"
-          [fill]="chartOptions.fill"
-          [dataLabels]="chartOptions.dataLabels"
-          [legend]="chartOptions.legend"
-        ></apx-chart>
-      </div>
+  <div class="card-body">
+    <div class="pie-chart-container">
+      <p>Total CO2e Emissions : 209</p>
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [labels]="chartOptions.labels"
+        [fill]="chartOptions.fill"
+        [dataLabels]="chartOptions.dataLabels"
+        [legend]="chartOptions.legend"
+      ></apx-chart>
     </div>
   </div>
-  
+</div>

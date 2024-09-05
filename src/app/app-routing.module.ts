@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: '', component: HomeComponent },
   { path: 'factors', component: FactorsComponent
-    // , canActivate: [authGuard] 
+    , canActivate: [authGuard]
   },
   { path: 'water', component: WaterComponent, canActivate: [authGuard] },
   {

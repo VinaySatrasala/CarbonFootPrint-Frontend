@@ -1,3 +1,4 @@
+import { FactorsService } from './../factors.service';
 import { Component, ErrorHandler, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -17,12 +18,13 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  countries: string[] = ['United States', 'Canada', 'Australia'];
+  countries: string[] =[];
 
   constructor(
     private fb: FormBuilder,
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private factorsService : FactorsService
   ) {
     this.signupForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -40,7 +42,19 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+      this.factorsService.getCountryRecords().subscribe({
+        next:(response) => {
+
+            for(let elt of response){
+              this.countries.push(elt['Country'])
+            }
+        },
+        error:(err)=>{
+          console.error(err)
+        }
+      })
+  }
 
   onSubmit(): void {
     if (this.signupForm.valid) {

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { FactorsService } from './../factors.service';
+import { FactorsComponent } from './../factors/factors.component';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-water',
@@ -20,6 +22,11 @@ export class WaterComponent {
   hasWaterSavingFixtures: string = 'no';
   estimatedWaterUsage: number | null = null;
 
+  @ViewChild('form')
+  form:any;
+
+  constructor(private factorsService:FactorsService){}
+
   calculateWaterUsage() {
     const averagePerPersonDaily = 45; // Average gallons per person per day
     const lawnWaterUsage = this.hasLawn === 'yes' ? this.lawnSize * 0.62 * this.wateringFrequency : 0;
@@ -36,6 +43,41 @@ export class WaterComponent {
     const totalWaterUsageMonthlyLiters = totalWaterUsageDaily * 30 * 3.78541178;
 
     this.estimatedWaterUsage = totalWaterUsageMonthlyLiters;
-    alert("Estimated Monthly Water Usage: " + this.estimatedWaterUsage.toFixed(2) + " liters");
+    return this.estimatedWaterUsage.toFixed(2);
+  }
+
+  reset(){
+    this.hasDishwasher = 'no'
+    this.hasLawn = 'no'
+    this.hasWashingMachine = 'no'
+    this.hasWaterSavingFixtures = 'no'
+
+  }
+
+  onSubmit() {
+    // Logic to handle form submission
+    let litres_used = this.calculateWaterUsage();
+    this.factorsService.putRecordIfAbsent().subscribe({
+      next:(emissionID)=>{
+
+        let body = {water:{
+            litres_used : litres_used
+        }}
+
+        if(emissionID){
+
+          this.factorsService.updateRecord('water',body,emissionID).subscribe({
+            next:(success)=>{
+              if(success)
+                this.reset()
+            },
+            error:(err)=>{console.log(err);
+            }
+          })
+      }
+    }
+
+  })
+
   }
 }

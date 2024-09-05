@@ -1,0 +1,967 @@
+[
+	{
+		"2021": "7.68",
+		"iso": "CHN",
+		"Country": "China"
+	},
+	{
+		"2021": "13.21",
+		"iso": "USA",
+		"Country": "United States"
+	},
+	{
+		"2021": "1.7",
+		"iso": "IND",
+		"Country": "India"
+	},
+	{
+		"2021": "8.4",
+		"iso": "RUS",
+		"Country": "Russia"
+	},
+	{
+		"2021": "3.87",
+		"iso": "IDN",
+		"Country": "Indonesia"
+	},
+	{
+		"2021": "7.88",
+		"iso": "JPN",
+		"Country": "Japan"
+	},
+	{
+		"2021": "3.97",
+		"iso": "BRA",
+		"Country": "Brazil"
+	},
+	{
+		"2021": "8.1",
+		"iso": "IRN",
+		"Country": "Iran"
+	},
+	{
+		"2021": "7.53",
+		"iso": "DEU",
+		"Country": "Germany"
+	},
+	{
+		"2021": "6.3",
+		"iso": "COD",
+		"Country": "Democratic Republic of the Congo"
+	},
+	{
+		"2021": "14.88",
+		"iso": "CAN",
+		"Country": "Canada"
+	},
+	{
+		"2021": "10.37",
+		"iso": "KOR",
+		"Country": "South Korea"
+	},
+	{
+		"2021": "14.74",
+		"iso": "SAU",
+		"Country": "Saudi Arabia"
+	},
+	{
+		"2021": "3.33",
+		"iso": "MEX",
+		"Country": "Mexico"
+	},
+	{
+		"2021": "4.95",
+		"iso": "TUR",
+		"Country": "Turkey"
+	},
+	{
+		"2021": "6.8",
+		"iso": "ZAF",
+		"Country": "South Africa"
+	},
+	{
+		"2021": "14.33",
+		"iso": "AUS",
+		"Country": "Australia"
+	},
+	{
+		"2021": "5.07",
+		"iso": "GBR",
+		"Country": "United Kingdom"
+	},
+	{
+		"2021": "3.43",
+		"iso": "VNM",
+		"Country": "Vietnam"
+	},
+	{
+		"2021": "9.14",
+		"iso": "MYS",
+		"Country": "Malaysia"
+	},
+	{
+		"2021": "5.15",
+		"iso": "ITA",
+		"Country": "Italy"
+	},
+	{
+		"2021": "7.66",
+		"iso": "POL",
+		"Country": "Poland"
+	},
+	{
+		"2021": "3.76",
+		"iso": "THA",
+		"Country": "Thailand"
+	},
+	{
+		"2021": "3.49",
+		"iso": "FRA",
+		"Country": "France"
+	},
+	{
+		"2021": "2.11",
+		"iso": "EGY",
+		"Country": "Egypt"
+	},
+	{
+		"2021": "0.98",
+		"iso": "PAK",
+		"Country": "Pakistan"
+	},
+	{
+		"2021": "11.97",
+		"iso": "KAZ",
+		"Country": "Kazakhstan"
+	},
+	{
+		"2021": "4.57",
+		"iso": "ARG",
+		"Country": "Argentina"
+	},
+	{
+		"2021": "4.35",
+		"iso": "ESP",
+		"Country": "Spain"
+	},
+	{
+		"2021": "20.02",
+		"iso": "ARE",
+		"Country": "United Arab Emirates"
+	},
+	{
+		"2021": "0.8",
+		"iso": "NGA",
+		"Country": "Nigeria"
+	},
+	{
+		"2021": "3.88",
+		"iso": "IRQ",
+		"Country": "Iraq"
+	},
+	{
+		"2021": "3.82",
+		"iso": "DZA",
+		"Country": "Algeria"
+	},
+	{
+		"2021": "3.23",
+		"iso": "COL",
+		"Country": "Colombia"
+	},
+	{
+		"2021": "3.67",
+		"iso": "UKR",
+		"Country": "Ukraine"
+	},
+	{
+		"2021": "1.27",
+		"iso": "PHL",
+		"Country": "Philippines"
+	},
+	{
+		"2021": "4.21",
+		"iso": "PER",
+		"Country": "Peru"
+	},
+	{
+		"2021": "8.05",
+		"iso": "NLD",
+		"Country": "Netherlands"
+	},
+	{
+		"2021": "2.41",
+		"iso": "MMR",
+		"Country": "Myanmar"
+	},
+	{
+		"2021": "3.43",
+		"iso": "UZB",
+		"Country": "Uzbekistan"
+	},
+	{
+		"2021": "0.7",
+		"iso": "BGD",
+		"Country": "Bangladesh"
+	},
+	{
+		"2021": "3.77",
+		"iso": "VEN",
+		"Country": "Venezuela"
+	},
+	{
+		"2021": "23.68",
+		"iso": "KWT",
+		"Country": "Kuwait"
+	},
+	{
+		"2021": "6.05",
+		"iso": "ZWE",
+		"Country": "Zimbabwe"
+	},
+	{
+		"2021": "7.7",
+		"iso": "BEL",
+		"Country": "Belgium"
+	},
+	{
+		"2021": "7.37",
+		"iso": "BOL",
+		"Country": "Bolivia"
+	},
+	{
+		"2021": "32.99",
+		"iso": "QAT",
+		"Country": "Qatar"
+	},
+	{
+		"2021": "8.43",
+		"iso": "CZE",
+		"Country": "Czech Republic"
+	},
+	{
+		"2021": "1.3",
+		"iso": "TZA",
+		"Country": "Tanzania"
+	},
+	{
+		"2021": "16.93",
+		"iso": "OMN",
+		"Country": "Oman"
+	},
+	{
+		"2021": "1.9",
+		"iso": "MAR",
+		"Country": "Morocco"
+	},
+	{
+		"2021": "3.63",
+		"iso": "ECU",
+		"Country": "Ecuador"
+	},
+	{
+		"2021": "9.75",
+		"iso": "TKM",
+		"Country": "Turkmenistan"
+	},
+	{
+		"2021": "1.9",
+		"iso": "MOZ",
+		"Country": "Mozambique"
+	},
+	{
+		"2021": "1.74",
+		"iso": "AGO",
+		"Country": "Angola"
+	},
+	{
+		"2021": "2.31",
+		"iso": "PRK",
+		"Country": "North Korea"
+	},
+	{
+		"2021": "6.28",
+		"iso": "ISR",
+		"Country": "Israel"
+	},
+	{
+		"2021": "6.19",
+		"iso": "AUT",
+		"Country": "Austria"
+	},
+	{
+		"2021": "8.14",
+		"iso": "PRY",
+		"Country": "Paraguay"
+	},
+	{
+		"2021": "5.12",
+		"iso": "GRC",
+		"Country": "Greece"
+	},
+	{
+		"2021": "5.78",
+		"iso": "BLR",
+		"Country": "Belarus"
+	},
+	{
+		"2021": "7.93",
+		"iso": "LBY",
+		"Country": "Libya"
+	},
+	{
+		"2021": "2.66",
+		"iso": "ROU",
+		"Country": "Romania"
+	},
+	{
+		"2021": "9.11",
+		"iso": "FIN",
+		"Country": "Finland"
+	},
+	{
+		"2021": "2.89",
+		"iso": "KHM",
+		"Country": "Cambodia"
+	},
+	{
+		"2021": "4.93",
+		"iso": "HUN",
+		"Country": "Hungary"
+	},
+	{
+		"2021": "18.3",
+		"iso": "BWA",
+		"Country": "Botswana"
+	},
+	{
+		"2021": "0.39",
+		"iso": "ETH",
+		"Country": "Ethiopia"
+	},
+	{
+		"2021": "64.6",
+		"iso": "SLB",
+		"Country": "Solomon Islands"
+	},
+	{
+		"2021": "13.62",
+		"iso": "MNG",
+		"Country": "Mongolia"
+	},
+	{
+		"2021": "8.36",
+		"iso": "SGP",
+		"Country": "Singapore"
+	},
+	{
+		"2021": "6.61",
+		"iso": "SRB",
+		"Country": "Serbia"
+	},
+	{
+		"2021": "1.58",
+		"iso": "CMR",
+		"Country": "Cameroon"
+	},
+	{
+		"2021": "8.49",
+		"iso": "IRL",
+		"Country": "Ireland"
+	},
+	{
+		"2021": "0.93",
+		"iso": "SDN",
+		"Country": "Sudan"
+	},
+	{
+		"2021": "2.09",
+		"iso": "ZMB",
+		"Country": "Zambia"
+	},
+	{
+		"2021": "4.04",
+		"iso": "PNG",
+		"Country": "Papua New Guinea"
+	},
+	{
+		"2021": "1.39",
+		"iso": "CIV",
+		"Country": "Côte d'Ivoire"
+	},
+	{
+		"2021": "3.6",
+		"iso": "PRT",
+		"Country": "Portugal"
+	},
+	{
+		"2021": "4",
+		"iso": "CHE",
+		"Country": "Switzerland"
+	},
+	{
+		"2021": "3.29",
+		"iso": "AZE",
+		"Country": "Azerbaijan"
+	},
+	{
+		"2021": "22.7",
+		"iso": "BHR",
+		"Country": "Bahrain"
+	},
+	{
+		"2021": "4.32",
+		"iso": "LAO",
+		"Country": "Laos"
+	},
+	{
+		"2021": "5.7",
+		"iso": "SVK",
+		"Country": "Slovakia"
+	},
+	{
+		"2021": "5.29",
+		"iso": "DNK",
+		"Country": "Denmark"
+	},
+	{
+		"2021": "1.37",
+		"iso": "BFA",
+		"Country": "Burkina Faso"
+	},
+	{
+		"2021": "1.47",
+		"iso": "CHL",
+		"Country": "Chile"
+	},
+	{
+		"2021": "2.28",
+		"iso": "TUN",
+		"Country": "Tunisia"
+	},
+	{
+		"2021": "2.5",
+		"iso": "DOM",
+		"Country": "Dominican Republic"
+	},
+	{
+		"2021": "1.48",
+		"iso": "TCD",
+		"Country": "Chad"
+	},
+	{
+		"2021": "1.16",
+		"iso": "SYR",
+		"Country": "Syria"
+	},
+	{
+		"2021": "3.57",
+		"iso": "NIC",
+		"Country": "Nicaragua"
+	},
+	{
+		"2021": "1.1",
+		"iso": "LKA",
+		"Country": "Sri Lanka"
+	},
+	{
+		"2021": "2.34",
+		"iso": "SWE",
+		"Country": "Sweden"
+	},
+	{
+		"2021": "1.34",
+		"iso": "GTM",
+		"Country": "Guatemala"
+	},
+	{
+		"2021": "4.14",
+		"iso": "NOR",
+		"Country": "Norway"
+	},
+	{
+		"2021": "4.32",
+		"iso": "NZL",
+		"Country": "New Zealand"
+	},
+	{
+		"2021": "1.96",
+		"iso": "JOR",
+		"Country": "Jordan"
+	},
+	{
+		"2021": "0.45",
+		"iso": "UGA",
+		"Country": "Uganda"
+	},
+	{
+		"2021": "5.94",
+		"iso": "BIH",
+		"Country": "Bosnia and Herzegovina"
+	},
+	{
+		"2021": "0.63",
+		"iso": "NPL",
+		"Country": "Nepal"
+	},
+	{
+		"2021": "1.05",
+		"iso": "SOM",
+		"Country": "Somalia"
+	},
+	{
+		"2021": "1.59",
+		"iso": "CUB",
+		"Country": "Cuba"
+	},
+	{
+		"2021": "2.99",
+		"iso": "LBN",
+		"Country": "Lebanon"
+	},
+	{
+		"2021": "2.85",
+		"iso": "COG",
+		"Country": "Congo"
+	},
+	{
+		"2021": "1.22",
+		"iso": "GIN",
+		"Country": "Guinea"
+	},
+	{
+		"2021": "1.27",
+		"iso": "BEN",
+		"Country": "Benin"
+	},
+	{
+		"2021": "0.98",
+		"iso": "SEN",
+		"Country": "Senegal"
+	},
+	{
+		"2021": "5.88",
+		"iso": "LTU",
+		"Country": "Lithuania"
+	},
+	{
+		"2021": "20",
+		"iso": "GUY",
+		"Country": "Guyana"
+	},
+	{
+		"2021": "1.5",
+		"iso": "HND",
+		"Country": "Honduras"
+	},
+	{
+		"2021": "3.47",
+		"iso": "PAN",
+		"Country": "Panama"
+	},
+	{
+		"2021": "5.78",
+		"iso": "NAM",
+		"Country": "Namibia"
+	},
+	{
+		"2021": "0.27",
+		"iso": "KEN",
+		"Country": "Kenya"
+	},
+	{
+		"2021": "2.75",
+		"iso": "LBR",
+		"Country": "Liberia"
+	},
+	{
+		"2021": "2.61",
+		"iso": "CAF",
+		"Country": "Central African Republic"
+	},
+	{
+		"2021": "9",
+		"iso": "TTO",
+		"Country": "Trinidad and Tobago"
+	},
+	{
+		"2021": "1.23",
+		"iso": "SSD",
+		"Country": "South Sudan"
+	},
+	{
+		"2021": "6.21",
+		"iso": "SVN",
+		"Country": "Slovenia"
+	},
+	{
+		"2021": "0.45",
+		"iso": "MDG",
+		"Country": "Madagascar"
+	},
+	{
+		"2021": "9.71",
+		"iso": "EST",
+		"Country": "Estonia"
+	},
+	{
+		"2021": "0.32",
+		"iso": "AFG",
+		"Country": "Afghanistan"
+	},
+	{
+		"2021": "3.08",
+		"iso": "HRV",
+		"Country": "Croatia"
+	},
+	{
+		"2021": "19.28",
+		"iso": "SUR",
+		"Country": "Suriname"
+	},
+	{
+		"2021": "4.75",
+		"iso": "GAB",
+		"Country": "Gabon"
+	},
+	{
+		"2021": "2.94",
+		"iso": "GEO",
+		"Country": "Georgia"
+	},
+	{
+		"2021": "0.33",
+		"iso": "YEM",
+		"Country": "Yemen"
+	},
+	{
+		"2021": "0.5",
+		"iso": "MWI",
+		"Country": "Malawi"
+	},
+	{
+		"2021": "21.88",
+		"iso": "BRN",
+		"Country": "Brunei"
+	},
+	{
+		"2021": "3.7",
+		"iso": "MDA",
+		"Country": "Moldova"
+	},
+	{
+		"2021": "0.95",
+		"iso": "TJK",
+		"Country": "Tajikistan"
+	},
+	{
+		"2021": "1.33",
+		"iso": "SLV",
+		"Country": "El Salvador"
+	},
+	{
+		"2021": "12.4",
+		"iso": "LUX",
+		"Country": "Luxembourg"
+	},
+	{
+		"2021": "2.65",
+		"iso": "ARM",
+		"Country": "Armenia"
+	},
+	{
+		"2021": "4.47",
+		"iso": "GNQ",
+		"Country": "Equatorial Guinea"
+	},
+	{
+		"2021": "3.83",
+		"iso": "LVA",
+		"Country": "Latvia"
+	},
+	{
+		"2021": "1.05",
+		"iso": "KGZ",
+		"Country": "Kyrgyzstan"
+	},
+	{
+		"2021": "0.32",
+		"iso": "MLI",
+		"Country": "Mali"
+	},
+	{
+		"2021": "3.32",
+		"iso": "MKD",
+		"Country": "North Macedonia"
+	},
+	{
+		"2021": "5.34",
+		"iso": "CYP",
+		"Country": "Cyprus"
+	},
+	{
+		"2021": "2.31",
+		"iso": "JAM",
+		"Country": "Jamaica"
+	},
+	{
+		"2021": "1.81",
+		"iso": "URY",
+		"Country": "Uruguay"
+	},
+	{
+		"2021": "14.69",
+		"iso": "BLZ",
+		"Country": "Belize"
+	},
+	{
+		"2021": "0.85",
+		"iso": "BGR",
+		"Country": "Bulgaria"
+	},
+	{
+		"2021": "1.76",
+		"iso": "ALB",
+		"Country": "Albania"
+	},
+	{
+		"2021": "0.53",
+		"iso": "SLE",
+		"Country": "Sierra Leone"
+	},
+	{
+		"2021": "3.11",
+		"iso": "MUS",
+		"Country": "Mauritius"
+	},
+	{
+		"2021": "0.16",
+		"iso": "NER",
+		"Country": "Niger"
+	},
+	{
+		"2021": "0.34",
+		"iso": "HTI",
+		"Country": "Haiti"
+	},
+	{
+		"2021": "0.3",
+		"iso": "BDI",
+		"Country": "Burundi"
+	},
+	{
+		"2021": "0.41",
+		"iso": "TGO",
+		"Country": "Togo"
+	},
+	{
+		"2021": "1.36",
+		"iso": "LSO",
+		"Country": "Lesotho"
+	},
+	{
+		"2021": "0.21",
+		"iso": "RWA",
+		"Country": "Rwanda"
+	},
+	{
+		"2021": "4.16",
+		"iso": "MNE",
+		"Country": "Montenegro"
+	},
+	{
+		"2021": "5.79",
+		"iso": "BHS",
+		"Country": "Bahamas"
+	},
+	{
+		"2021": "5.82",
+		"iso": "ISL",
+		"Country": "Iceland"
+	},
+	{
+		"2021": "0.88",
+		"iso": "GNB",
+		"Country": "Guinea-Bissau"
+	},
+	{
+		"2021": "3.38",
+		"iso": "MDV",
+		"Country": "Maldives"
+	},
+	{
+		"2021": "3.11",
+		"iso": "MLT",
+		"Country": "Malta"
+	},
+	{
+		"2021": "4.83",
+		"iso": "BRB",
+		"Country": "Barbados"
+	},
+	{
+		"2021": "0.47",
+		"iso": "GMB",
+		"Country": "Gambia"
+	},
+	{
+		"2021": "0.32",
+		"iso": "ERI",
+		"Country": "Eritrea"
+	},
+	{
+		"2021": "0.93",
+		"iso": "SWZ",
+		"Country": "Eswatini"
+	},
+	{
+		"2021": "0.83",
+		"iso": "TLS",
+		"Country": "East Timor"
+	},
+	{
+		"2021": "6.83",
+		"iso": "ATG",
+		"Country": "Antigua and Barbuda"
+	},
+	{
+		"2021": "6.12",
+		"iso": "SYC",
+		"Country": "Seychelles"
+	},
+	{
+		"2021": "0.8",
+		"iso": "CPV",
+		"Country": "Cabo Verde"
+	},
+	{
+		"2021": "0.56",
+		"iso": "COM",
+		"Country": "Comoros"
+	},
+	{
+		"2021": "0.09",
+		"iso": "CRI",
+		"Country": "Costa Rica"
+	},
+	{
+		"2021": "0.4",
+		"iso": "DJI",
+		"Country": "Djibouti"
+	},
+	{
+		"2021": "1.68",
+		"iso": "WSM",
+		"Country": "Samoa"
+	},
+	{
+		"2021": "2.03",
+		"iso": "LCA",
+		"Country": "Saint Lucia"
+	},
+	{
+		"2021": "4.59",
+		"iso": "AND",
+		"Country": "Andorra"
+	},
+	{
+		"2021": "1.63",
+		"iso": "STP",
+		"Country": "São Tomé and Principe"
+	},
+	{
+		"2021": "2.49",
+		"iso": "GRD",
+		"Country": "Grenada"
+	},
+	{
+		"2021": "2.54",
+		"iso": "VCT",
+		"Country": "Saint Vincent and the Grenadines"
+	},
+	{
+		"2021": "5.04",
+		"iso": "KNA",
+		"Country": "Saint Kitts and Nevis"
+	},
+	{
+		"2021": "12.25",
+		"iso": "PLW",
+		"Country": "Palau"
+	},
+	{
+		"2021": "0.69",
+		"iso": "VUT",
+		"Country": "Vanuatu"
+	},
+	{
+		"2021": "1.88",
+		"iso": "TON",
+		"Country": "Tonga"
+	},
+	{
+		"2021": "3.73",
+		"iso": "MHL",
+		"Country": "Marshall Islands"
+	},
+	{
+		"2021": "2.12",
+		"iso": "DMA",
+		"Country": "Dominica"
+	},
+	{
+		"2021": "3.74",
+		"iso": "LIE",
+		"Country": "Liechtenstein"
+	},
+	{
+		"2021": "1.05",
+		"iso": "FSM",
+		"Country": "Micronesia"
+	},
+	{
+		"2021": "0.59",
+		"iso": "KIR",
+		"Country": "Kiribati"
+	},
+	{
+		"2021": "FALSE",
+		"iso": "COK",
+		"Country": "Cook Islands"
+	},
+	{
+		"2021": "4.43",
+		"iso": "NRU",
+		"Country": "Nauru"
+	},
+	{
+		"2021": "0.86",
+		"iso": "TUV",
+		"Country": "Tuvalu"
+	},
+	{
+		"2021": "FALSE",
+		"iso": "NIU",
+		"Country": "Niue"
+	},
+	{
+		"2021": "-0.32",
+		"iso": "BTN",
+		"Country": "Bhutan"
+	},
+	{
+		"2021": "-0.23",
+		"iso": "MRT",
+		"Country": "Mauritania"
+	},
+	{
+		"2021": "-1.63",
+		"iso": "FJI",
+		"Country": "Fiji"
+	},
+	{
+		"2021": "-0.07",
+		"iso": "GHA",
+		"Country": "Ghana"
+	}
+]
