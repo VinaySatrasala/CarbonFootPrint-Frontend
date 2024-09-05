@@ -1,18 +1,18 @@
 .d-container {
   display: grid;
   padding-right: 50px;
-  grid-template: 4fr 2fr 2fr 2fr / repeat(6, 1fr);
+  grid-template: 1fr repeat(3,200px) / 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
   max-width: 100vw;
   gap: 50px;
   background-color: #f3f4f3;
 }
 
 .pie {
-  grid-area: 1/5/2/-1;
+  grid-area: 1/6/2/-1;
 }
 
 .bar {
-  grid-area: 1/2/2/5;
+  grid-area: 1/2/2/6;
 }
 
 .sidebar {
@@ -22,8 +22,36 @@
   min-height: 100vh;
 }
 
+.cat-card{
+  background-color: white;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+  border:solid 1px #0000002d;
+  border-radius: 8px;
+  padding:12px;
+}
+
 .electricity {
   grid-area: 2/2/3/4;
+}
+
+.water{
+  grid-area:2/4/3/6;
+}
+
+.travel{
+  grid-area: 2/6/3/-1;
+}
+
+.waste {
+  grid-area: 3/2/4/4;
+}
+
+.fuel{
+  grid-area:3/4/4/6;
+}
+
+.dietary{
+  grid-area: 3/6/4/-1;
 }
 
 /* .f-parent {
@@ -50,11 +78,11 @@
   margin-left: 22vw;
   height: 100vh;
 
-  
+
 }
 .top-div {
   margin: 0;
- 
+
 }
 
 

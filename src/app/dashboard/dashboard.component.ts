@@ -19,6 +19,14 @@ export class DashboardComponent implements OnInit {
   countryRecords: any = [];
   emissionRecords!: any;
   avgPersonPerCountryCO2!: number;
+  categories :any = {}
+  water:any = {}
+  electricity :any = {}
+  fuel_sources :any = {}
+  dietary_habits : any = {}
+  public_transport : any = {}
+  private_transport : any = {}
+  waste : any = {}
 
   ngOnInit(): void {
     this.fatcorsService.fetchCurrentMonthData().subscribe({
@@ -67,6 +75,9 @@ export class DashboardComponent implements OnInit {
 
   extractEmissionsPerCategory(): void {
     Object.keys(this.record).forEach((key, index) => {
+      if(['water','electricity','waste','fuel_sources','dietary_habits','public_transport','private_transport'].includes(key)){
+          this.categories[key] = this.record[key]
+      }
       if (this.record[key].emission != undefined)
         this.emissionPerCategory[key] = this.record[key].emission;
     });

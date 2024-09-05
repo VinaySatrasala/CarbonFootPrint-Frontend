@@ -9,17 +9,17 @@
   <div class="imp-card bar">
     <app-history [emissionRecords]="emissionRecords"></app-history>
   </div>
-  <div class="imp-card electricity">
-    <p>kwh used : </p>
+  <div class="cat-card electricity">
+    <p>kwh used : {{categories.electricity.kwh_used}} </p>
   </div>
-  <div class="imp-card water">
+  <div class="cat-card water">
     <p>litres used : </p>
   </div>
-  <div class="imp-card fuel">
+  <div class="cat-card fuel">
     <p>lpg used : </p>
     <p>firewood : </p>
   </div>
-  <div class="imp-card travel">
+  <div class="cat-card travel">
     <div class="public-transport">
       <p>public transport</p>
       <p>bus :</p>
@@ -32,12 +32,12 @@
       <p>distance travelled :</p>
     </div>
   </div>
-  <div class="imp-card dietary">
+  <div class="cat-card dietary">
     <p>meat consumption :</p>
     <p>dairy consumption :</p>
     <p>others :</p>
   </div>
-  <div class="imp-card waste">
+  <div class="cat-card waste">
     <p>recyclable waste :</p>
     <p>non-recyclable waste :</p>
   </div>
@@ -51,7 +51,7 @@
   <h1>Something unexpected happened : couldn't fetch data</h1>
 </div>
 
-<!-- 
+<!--
 <div
   class="d-flex top-div dashboard-container"
   *ngIf="!loading && !errorWhenFetching"
