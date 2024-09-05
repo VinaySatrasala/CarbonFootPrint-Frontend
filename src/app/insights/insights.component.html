@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 p-3">
+    <div class="card shadow-lg" style="width: 50rem;">
+        <div class="card-body">
+            <div *ngFor="let insight of insights" class="mb-4">
+                <h5 class="card-title">{{insight.category}}</h5>
+                <p class="card-text">{{insight.insight}}</p>
+            </div>
+
+            <div class="mt-4">
+                <h5 class="card-title">Overall</h5>
+                <p class="card-text">{{res.general}}</p>
+            </div>
+        </div>
+    </div>
+</div>

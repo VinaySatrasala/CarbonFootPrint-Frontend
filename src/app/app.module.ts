@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { HistoryComponent } from './history/history.component';
+import { InsightsComponent } from './insights/insights.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HistoryComponent } from './history/history.component';
     RadialBarChartComponent,
     DashboardComponent,
     PieChartComponent,
-    HistoryComponent
+    HistoryComponent,
+    InsightsComponent
   ],
   imports: [
     BrowserModule,
