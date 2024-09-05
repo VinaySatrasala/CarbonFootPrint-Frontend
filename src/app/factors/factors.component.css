@@ -1,20 +1,22 @@
-.container-wrapper {
+/* .container-wrapper {
   display: flex;
   justify-content: center; /* Center the grid on the page */
-  padding: 20px; /* Add some padding around the grid */
-  background-color: #f2f2f2; /* Soft Slate Gray */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  /* padding: 20px; Add some padding around the grid */
+  /* background-color: #f2f2f2; Soft Slate Gray */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} */
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(3, auto); /* Auto size columns */
-  gap: 35px; /* Reduced gap between cards */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to the grid container */
-  padding: 10px; /* Optional: Adds padding inside the container */
-  background-color: #fff; /* Optional: Background color for the container */
-  border-radius: 8px; /* Optional: Rounded corners */
-  width: 75%;
+.container1 {
+  /* display: grid; */
+  /* grid-template-columns: repeat(3, auto); Auto size columns */
+  /* gap: 35px; Reduced gap between cards */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); Add shadow to the grid container */
+  /* padding: 10px; Optional: Adds padding inside the container */
+  /* background-color: #fff; Optional: Background color for the container */
+  /* border-radius: 8px; Optional: Rounded corners */
+  /* width: 75%; */ 
+  border: 1px solid black;
+  width: 90vw;
 }
 
 .card {
@@ -29,11 +31,16 @@
 .card:hover {
   transform: scale(0.9);
 }
+.img-div{
+  width: 30%;
 
+}
 .card-img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensure the image covers the card */
+  border-top-left-radius: 150px;
+  border-bottom-left-radius: 150px;
 }
 
 /* Responsive Layout */
@@ -47,4 +54,19 @@
   .container {
     grid-template-columns: 1fr; /* 1 column on mobile */
   }
+}
+
+.electricity{
+  border: 1px solid black;
+  height: 40vh;
+  width: 70%;
+  /* border-top-left-radius: 100px; */
+  border-top-left-radius: 150px;
+  border-bottom-left-radius: 150px;
+}
+.outer{
+  border: 1px solid black;
+}
+.content{
+  width: 70%;
 }

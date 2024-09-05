@@ -16,13 +16,14 @@ import { authGuard } from './auth.guard';
 import { HistoryComponent } from './history/history.component';
 import { InsightsComponent } from './insights/insights.component';
 import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
+import { TrailFactComponent } from './trail-fact/trail-fact.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: '', component: HomeComponent },
-  { path: 'factors', component: FactorsComponent
-    , canActivate: [authGuard]
+  { path: 'factors', component: TrailFactComponent
+    // , canActivate: [authGuard]
   },
   { path: 'water', component: WaterComponent, canActivate: [authGuard] },
   {

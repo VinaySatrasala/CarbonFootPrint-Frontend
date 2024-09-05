@@ -28,6 +28,7 @@ import { HistoryComponent } from './history/history.component';
 import { InsightsComponent } from './insights/insights.component';
 import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
 import { LoadingComponent } from './loading/loading.component';
+import { TrailFactComponent } from './trail-fact/trail-fact.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { LoadingComponent } from './loading/loading.component';
     HistoryComponent,
     InsightsComponent,
     HorizontalBarComponent,
-    LoadingComponent
+    LoadingComponent,
+    TrailFactComponent
   ],
   imports: [
     BrowserModule,
