@@ -1,55 +1,57 @@
-.body-class {
-    background-color: #f4f4f4;
-    font-family: 'PangeaSemiBold', sans-serif;
-    color: #101010;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+.maincontainer {
+  font-size: 16px; /* Increased the base font size */
+  font-weight: bold;
+}
 
-  .navbar {
-    padding: 15px 30px;
-  }
 
-  .navbar .navbar-brand h1 {
-    font-family: 'PangeaSemiBold', sans-serif;
-    font-size: 28px;
-    color: #00712D;
-    margin: 0;
-  }
 
-  .navbar .nav-link {
-    font-size: 16px;
-    color: #00712D !important;
-  }
+.header * {
+  color: #fff !important;
+}
 
-  .intro-section {
-    color: black;
-    padding: 100px 20px;
-    flex: 1;
-  }
+.navbar {
+  background-color: black;
+  padding: 10px 20px;
+}
 
-  .intro-text h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
-  }
+.logo {
+  font-size: 24px; /* Increased the font size of the logo */
+  font-weight: bold;
+  text-decoration: none;
+}
 
-  .intro-text p {
-    font-size: 20px;
-    margin-bottom: 40px;
-  }
+.btn-signin{
+  color: black;
+}
 
-  .footer {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-top: 1px solid #ddd;
-  }
 
-  .footer .text-muted {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
+.main-div{
+  height: 100vh;
+  /* width: 100vw; */
+  padding: auto;
+}
 
-  .footer .list-inline-item a {
-    font-size: 14px;
-  }
+img{
+  height: 100%;
+  width: 100%;
+}
+
+.page-heading{
+  font-size: 60px;
+  padding-bottom: 20px;
+}
+
+.left{
+  padding-left: 80px;
+  padding-top: 40px;
+  width: 50%;
+}
+.right{
+  width: 50%;
+  padding: 50px;
+  padding-left: 0;
+}
+
+*{
+  font-family: 'wwf-regular',sans-serif;
+}

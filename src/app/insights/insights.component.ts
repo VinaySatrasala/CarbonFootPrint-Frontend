@@ -1,63 +1,71 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { FactorsService } from '../factors.service';
 
 @Component({
   selector: 'app-insights',
   templateUrl: './insights.component.html',
-  styleUrls: ['./insights.component.css']
+  styleUrls: ['./insights.component.css'],
 })
 export class InsightsComponent implements OnInit {
-  private readonly API_KEY = "AIzaSyCDjvlJPxyoiPHTkHzrlRzd2jXHEWyHQUc";
+  private readonly API_KEY = 'AIzaSyCDjvlJPxyoiPHTkHzrlRzd2jXHEWyHQUc';
   private genAI: GoogleGenerativeAI;
-  res: any = "Loading...";
-  insights: any[] = [];
+  res: any = 'Loading...';
+  insights: any = [];
+  loading: boolean = true; // Add loading flag to track data fetching
 
   // Define the expected response type (resType) to enforce consistency
   private readonly resType = {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "properties": {
-      "insights": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "category": { "type": "string" },
-            "insight": { "type": "string" }
+    $schema: 'http://json-schema.org/draft-07/schema#',
+    type: 'object',
+    properties: {
+      insights: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            category: { type: 'string' },
+            insight: { type: 'string' },
           },
-          "required": ["category", "insight"]
-        }
+          required: ['category', 'insight'],
+        },
       },
-      "general": { "type": "string" }
+      general: { type: 'string' },
     },
-    "required": ["insights"]
+    required: ['insights'],
   };
 
-  constructor() {
+  constructor(private service: FactorsService) {
     this.genAI = new GoogleGenerativeAI(this.API_KEY);
   }
 
   async ngOnInit(): Promise<void> {
-    const model = this.genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    this.fetchCurrentMonthDataAndGenerateInsights();
+  }
 
-    const data = {
-      emissions: {
-        categories: [
-          { categoryName: "Electricity", totalEmissionsKgCO2e: 1200, units: "kWh", details: { householdUse: 1000, renewableSources: 200 } },
-          { categoryName: "Transport", totalEmissionsKgCO2e: 850, units: "km", details: { car: 500, publicTransport: 200, flights: 150 } },
-          { categoryName: "Waste", totalEmissionsKgCO2e: 400, units: "kg", details: { recyclableWaste: 150, nonRecyclableWaste: 250 } },
-          { categoryName: "Dietary Habits", totalEmissionsKgCO2e: 600, units: "meals", details: { meat: 350, dairy: 150, other: 100 } },
-          { categoryName: "LPG", totalEmissionsKgCO2e: 300, units: "kg", details: { domesticCooking: 300 } },
-          { categoryName: "Water Usage", totalEmissionsKgCO2e: 250, units: "liters", details: { lawn: 150, household: 100 } }
-        ]
-      }
-    };
+  fetchCurrentMonthDataAndGenerateInsights(): void {
+    this.service.fetchCurrentMonthData().subscribe({
+      next: async (response) => {
+        if (response) {
+          await this.generateInsights(response);
+          this.loading = false; // Set loading to false after fetching data
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching current month data:', err);
+      },
+      complete: () => {
+      },
+    });
+  }
 
-    // Build the prompt using the data and expected response structure (resType)
+  async generateInsights(response: any): Promise<void> {
+    const model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
     const prompt = `
-      Analyze the following carbon emission data in detail and provide insights.provide lengthy insights
+      Analyze the following carbon emission data in detail and provide insights. Provide lengthy insights.
       Format the response according to the following JSON schema without sending the schema itself:
-      ${JSON.stringify(data)}.
+      ${JSON.stringify(response)}.
       Ensure that the response follows this format: ${JSON.stringify(this.resType)}
     `;
 
@@ -66,8 +74,8 @@ export class InsightsComponent implements OnInit {
       let textResponse = await result.response.text();
 
       // Clean up the response if it includes unwanted text or symbols
-      textResponse = textResponse.replace(/```/g, '').replace("json", '').trim();
-      
+      textResponse = textResponse.replace(/```/g, '').replace('json', '').trim();
+
       // Parse the response into JSON
       this.res = JSON.parse(textResponse);
 
@@ -75,12 +83,12 @@ export class InsightsComponent implements OnInit {
       if (this.res && this.res.insights) {
         this.insights = this.res.insights;
       } else {
-        throw new Error("Invalid response format");
+        throw new Error('Invalid response format');
       }
 
       console.log(this.res);
     } catch (error) {
-      console.error("Error generating content or invalid response format:", error);
+      console.error('Error generating content or invalid response format:', error);
     }
   }
 }

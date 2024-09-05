@@ -26,6 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { HistoryComponent } from './history/history.component';
 import { InsightsComponent } from './insights/insights.component';
+import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { InsightsComponent } from './insights/insights.component';
     DashboardComponent,
     PieChartComponent,
     HistoryComponent,
-    InsightsComponent
+    InsightsComponent,
+    HorizontalBarComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './auth.guard';
 import { HistoryComponent } from './history/history.component';
 import { InsightsComponent } from './insights/insights.component';
+import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -39,11 +40,14 @@ const routes: Routes = [
   { path: 'diet', component: DietComponent, canActivate: [authGuard] },
   {
     path: 'dashboard',
-    component: DashboardComponent
-    // canActivate: [authGuard],
+    component: DashboardComponent,
+    canActivate: [authGuard],
   },{
     path:'insights',
     component:InsightsComponent
+  },{
+    path:'horizontal',
+    component:HorizontalBarComponent
   }
 ];
 
