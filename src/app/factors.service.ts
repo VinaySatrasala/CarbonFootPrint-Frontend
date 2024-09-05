@@ -12,6 +12,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class FactorsService {
+  months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
   constructor(private httpClient: HttpClient) {}
 
   /**checks if current user already has an emission record for current month
@@ -87,27 +101,28 @@ export class FactorsService {
   }
 
   //fetch current month emission data
-  fetchCurrentMonthData(): Observable<string | null> {
+  fetchMonthData(year:number,month:string|number): Observable<string | null> {
     let url;
     let emissionRecord = new Subject<any>();
     const userID = sessionStorage.getItem('userID');
-    let year = new Date().getFullYear();
-    let month: string | number = new Date().getMonth();
+    month = this.months.indexOf(month as any);
     month++;
     if (month < 10) month = '0' + month;
     let date = `${year}-${month}`;
+
 
     if (userID) {
       url = `http://localhost:8070/api/v1/emissions/${userID}/${date}`;
       this.httpClient.get(url).subscribe({
         next: (response) => {
-          if (response) emissionRecord.next(response);
+
+          if (response){
+            emissionRecord.next(response);
+
+          }
         },
         error: (e) => {
-          console.error(e);
-          throwError(() => {
-            new Error(e);
-          });
+          emissionRecord.error(e)
         },
         complete: () => {
           /**console.info('complete')**/
