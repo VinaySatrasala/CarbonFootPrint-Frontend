@@ -19,6 +19,8 @@ import { AuthService } from '../auth.service';
 })
 export class SigninComponent implements OnInit {
   signinForm: FormGroup;
+  loginError: boolean = false;
+  errorMsg: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -44,7 +46,7 @@ export class SigninComponent implements OnInit {
           tap((data) => {
             this.authService.loginSuccessHandler(data as any);
           }),
-          catchError(this.handleError)
+          catchError(this.handleError.bind(this))
         )
         .subscribe();
     } else {
@@ -63,7 +65,11 @@ export class SigninComponent implements OnInit {
   handleError(error: HttpErrorResponse, caught: ObservableInput<any>) {
     if (error) {
       //redundant
-      if (error.error) console.log(error.error);
+      if (error.error) {
+        this.loginError = true;
+        this.errorMsg = error.error;
+        console.log(error.error);
+      }
       return throwError(() => {
         throw new Error('something bad happened : ' + error.error);
       });

@@ -1,136 +1,209 @@
 <app-header></app-header>
-
-<div class="d-container" *ngIf="!loading && !errorWhenFetching">
+<div class="d-container">
   <div class="sidebar">
-
+    <div class="avatar-sec">
+      <img id="avatar" src="assets/robot.png" alt="" />
+      <p>{{ username | uppercase }}</p>
+      <p>{{ email }}</p>
+    </div>
+    <div>
+      <label for="year">Select a date to view data </label>
+      <select
+        [(ngModel)]="selectedYear"
+        id="year"
+        (change)="updateData()"
+        style="width: 100%; margin-top: 20px"
+      >
+        <option *ngFor="let item of years" [value]="item">{{ item }}</option>
+      </select>
+    </div>
     <select [(ngModel)]="selectedMonth" id="month" (change)="updateData()">
-      <option *ngFor="let item of months" [value]="item">{{item}}</option>
+      <option *ngFor="let item of months" [value]="item">{{ item }}</option>
     </select>
-    <select [(ngModel)]="selectedYear" id="year" (change)="updateData()">
-      <option *ngFor="let item of years" [value]="item">{{item}}</option>
-    </select>
+
+    <a style="--clr: #7808d0" class="button" href="#">
+      <span class="button__icon-wrapper">
+        <svg
+          width="10"
+          class="button__icon-svg"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 15"
+        >
+          <path
+            fill="currentColor"
+            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+          ></path>
+        </svg>
+
+        <svg
+          class="button__icon-svg button__icon-svg--copy"
+          xmlns="http://www.w3.org/2000/svg"
+          width="10"
+          fill="none"
+          viewBox="0 0 14 15"
+        >
+          <path
+            fill="currentColor"
+            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+          ></path>
+        </svg>
+      </span>
+      View Insights
+    </a>
   </div>
-  <div class="imp-card pie">
-    <app-pie-chart [emissionPerCategory]="emissionPerCategory"></app-pie-chart>
-  </div>
-  <div class="imp-card bar">
-    <app-history [emissionRecords]="emissionRecords"></app-history>
-  </div>
-  <div class="cat-card avg">
-    <div class="cat-card-row">
-      <p>You</p>
-      <p style="font-weight:500;">{{totalEmission.toFixed(2)}} kg</p>
+  <ng-container *ngIf="!loading && !errorWhenFetching">
+    <div class="imp-card pie">
+      <app-pie-chart
+        [emissionPerCategory]="emissionPerCategory"
+      ></app-pie-chart>
     </div>
-    <div class="user-avg" [ngStyle]="{width: avgYourWidth}"></div>
-    <div class="cat-card-row">
-      <p>Avg per world</p>
-      <p style="font-weight:500;">{{avgPersonPerWorldCO2.toFixed(2)}} kg</p>
+    <div class="imp-card bar">
+      <app-history [emissionRecords]="emissionRecords"></app-history>
     </div>
-    <div class="world-avg" [ngStyle]="{width: avgWorldWidth}"></div>
-    <div class="cat-card-row">
-      <p>Avg per your country</p>
-      <p style="font-weight:500;">{{avgPersonPerCountryCO2.toFixed(2)}} kg</p>
+    <div class="cat-card avg">
+      <div class="cat-card-row">
+        <p>You</p>
+        <p style="font-weight: 500">{{ totalEmission.toFixed(2) }} kg</p>
+      </div>
+      <div class="user-avg" [ngStyle]="{ width: avgYourWidth }"></div>
+      <div class="cat-card-row">
+        <p>Avg per world</p>
+        <p style="font-weight: 500">{{ avgPersonPerWorldCO2.toFixed(2) }} kg</p>
+      </div>
+      <div class="world-avg" [ngStyle]="{ width: avgWorldWidth }"></div>
+      <div class="cat-card-row">
+        <p>Avg per your country</p>
+        <p style="font-weight: 500">
+          {{ avgPersonPerCountryCO2.toFixed(2) }} kg
+        </p>
+      </div>
+      <div class="country-avg" [ngStyle]="{ width: avgCountryWidth }"></div>
     </div>
-    <div class="country-avg" [ngStyle]="{width: avgCountryWidth}"></div>
-  </div>
-  <div class="cat-card electricity">
-    <div class="cat-title-row">
-      <p class="cat-card-title">ELECTRICITY</p>
-      <img src="assets/lightning.png" alt="">
-    </div>
-    <div class="cat-card-row">
-      <p>usage</p>
-      <p class="consumption_units">{{categories.electricity.kwh_used.toFixed(2)}}kWh </p>
-    </div>
-  </div>
-  <div class="cat-card water">
-    <div class="cat-title-row">
-      <p class="cat-card-title">WATER</p>
-      <img src="assets/water.png" alt="">
-    </div>
+    <div class="cat-card electricity">
+      <div class="cat-title-row">
+        <p class="cat-card-title">ELECTRICITY</p>
+        <img src="assets/lightning.png" alt="" />
+      </div>
       <div class="cat-card-row">
         <p>usage</p>
-        <p class="consumption_units">{{categories.water.litres_used.toFixed(2)}}L </p>
+        <p class="consumption_units">
+          {{ categories.electricity.kwh_used.toFixed(2) }}kWh
+        </p>
       </div>
-  </div>
-  <div class="cat-card fuel">
-    <div class="cat-title-row">
-      <p class="cat-card-title">DOMESTIC FUEL</p>
-      <img src="assets/lpg.png" alt="">
     </div>
-    <div class="cat-card-row">
-      <p>lpg used</p>
-      <p class="consumption_units">{{categories.fuel_sources.lpg.toFixed(2)}}kg</p>
+    <div class="cat-card water">
+      <div class="cat-title-row">
+        <p class="cat-card-title">WATER</p>
+        <img src="assets/water.png" alt="" />
+      </div>
+      <div class="cat-card-row">
+        <p>usage</p>
+        <p class="consumption_units">
+          {{ categories.water.litres_used.toFixed(2) }}L
+        </p>
+      </div>
     </div>
-    <div class="cat-card-row">
-      <p>firewood</p>
-      <p class="consumption_units">{{categories.fuel_sources.firewood.toFixed(2)}}kg </p>
+    <div class="cat-card fuel">
+      <div class="cat-title-row">
+        <p class="cat-card-title">DOMESTIC FUEL</p>
+        <img src="assets/lpg.png" alt="" />
+      </div>
+      <div class="cat-card-row">
+        <p>lpg used</p>
+        <p class="consumption_units">
+          {{ categories.fuel_sources.lpg.toFixed(2) }}kg
+        </p>
+      </div>
+      <div class="cat-card-row">
+        <p>firewood</p>
+        <p class="consumption_units">
+          {{ categories.fuel_sources.firewood.toFixed(2) }}kg
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="cat-card travel">
-    <div class="cat-title-row">
-      <p class="cat-card-title">TRAVEL</p>
-      <img src="assets/train.png" alt="">
-    </div>
+    <div class="cat-card travel">
+      <div class="cat-title-row">
+        <p class="cat-card-title">TRAVEL</p>
+        <img src="assets/train.png" alt="" />
+      </div>
       <div class="cat-card-row">
         <p>bus</p>
-        <p class="consumption_units">{{categories.public_transport.bus_km.toFixed(2)}}km</p>
+        <p class="consumption_units">
+          {{ categories.public_transport.bus_km.toFixed(2) }}km
+        </p>
       </div>
       <div class="cat-card-row">
         <p>train</p>
-        <p class="consumption_units">{{categories.public_transport.train_km.toFixed(2)}}km</p>
+        <p class="consumption_units">
+          {{ categories.public_transport.train_km.toFixed(2) }}km
+        </p>
       </div>
       <div class="cat-card-row">
         <p>flight</p>
-        <p class="consumption_units">{{categories.public_transport.flight_km.toFixed(2)}}km</p>
+        <p class="consumption_units">
+          {{ categories.public_transport.flight_km.toFixed(2) }}km
+        </p>
       </div>
       <div class="cat-card-row">
         <p>personal transport</p>
-        <p class="consumption_units">{{categories.private_transport.distance.toFixed(2)}}km</p>
+        <p class="consumption_units">
+          {{ categories.private_transport.distance.toFixed(2) }}km
+        </p>
       </div>
+    </div>
+    <div class="cat-card dietary">
+      <div class="cat-title-row">
+        <p class="cat-card-title">DIETARY HABITS</p>
+        <img src="assets/diet.png" alt="" />
+      </div>
+      <div class="cat-card-row">
+        <p>meat consumption</p>
+        <p class="consumption_units">
+          {{ categories.dietary_habits.meat_consumption.toFixed(2) }}kg
+        </p>
+      </div>
+      <div class="cat-card-row">
+        <p>dairy consumption</p>
+        <p class="consumption_units">
+          {{ categories.dietary_habits.dairy_consumption.toFixed(2) }}kg
+        </p>
+      </div>
+      <div class="cat-card-row">
+        <p>others</p>
+        <p class="consumption_units">
+          {{ categories.dietary_habits.other_consumption.toFixed(2) }}kg
+        </p>
+      </div>
+    </div>
+    <div class="cat-card waste">
+      <div class="cat-title-row">
+        <p class="cat-card-title">WASTE</p>
+        <img src="assets/waste.png" alt="" />
+      </div>
+      <div class="cat-card-row">
+        <p>recyclable waste</p>
+        <p class="consumption_units">
+          {{ categories.waste.recyclable_waste.toFixed(2) }}kg
+        </p>
+      </div>
+      <div class="cat-card-row">
+        <p>non-recyclable waste</p>
+        <p class="consumption_units">
+          {{ categories.waste.non_recyclable_waste.toFixed(2) }}kg
+        </p>
+      </div>
+    </div>
+  </ng-container>
+  <div *ngIf="loading" class="indicator">
+    <h1>loading...</h1>
   </div>
-  <div class="cat-card dietary">
-    <div class="cat-title-row">
-      <p class="cat-card-title">DIETARY HABITS</p>
-      <img src="assets/diet.png" alt="">
-    </div>
-    <div class="cat-card-row">
-      <p>meat consumption</p>
-      <p class="consumption_units">{{categories.dietary_habits.meat_consumption.toFixed(2)}}kg</p>
-    </div>
-    <div class="cat-card-row">
-      <p>dairy consumption</p>
-      <p class="consumption_units">{{categories.dietary_habits.dairy_consumption.toFixed(2)}}kg</p>
-    </div>
-    <div class="cat-card-row">
-      <p>others</p>
-      <p class="consumption_units">{{categories.dietary_habits.other_consumption.toFixed(2)}}kg</p>
-    </div>
-  </div>
-  <div class="cat-card waste">
-    <div class="cat-title-row">
-      <p class="cat-card-title">WASTE</p>
-      <img src="assets/waste.png" alt="">
-    </div>
-    <div class="cat-card-row">
-      <p>recyclable waste </p>
-      <p class="consumption_units">{{categories.waste.recyclable_waste.toFixed(2)}}kg</p>
-    </div>
-    <div class="cat-card-row">
-      <p>non-recyclable waste</p>
-      <p class="consumption_units">{{categories.waste.non_recyclable_waste.toFixed(2)}}kg</p>
-    </div>
-  </div>
-</div>
-<app-footer *ngIf="!loading&&!errorWhenFetching"></app-footer>
-<div *ngIf="loading">
-  <h1>loading...</h1>
-</div>
 
-<div *ngIf="errorWhenFetching">
-  <h1>Something unexpected happened : couldn't fetch data</h1>
+  <div *ngIf="errorWhenFetching" class="indicator">
+    <h1>No records found for user in the selected time period</h1>
+  </div>
 </div>
-
+<app-footer *ngIf="!loading && !errorWhenFetching"></app-footer>
 
 <!--
 <div

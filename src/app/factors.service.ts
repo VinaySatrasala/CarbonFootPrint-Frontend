@@ -13,18 +13,18 @@ import { Injectable } from '@angular/core';
 })
 export class FactorsService {
   months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
   constructor(private httpClient: HttpClient) {}
 
@@ -50,7 +50,7 @@ export class FactorsService {
               next: (response) => {
                 emissionIDSource.next((response as any)['id']);
               },
-              error: (e) => console.error(e),
+              error: (e) => emissionIDSource.error(e),
               complete: () => {
                 /**console.info('complete')**/
               },
@@ -86,7 +86,7 @@ export class FactorsService {
         if (response) success.next(true);
       },
       error: (e) => {
-        console.error(e);
+        success.error(e);
         throwError(() => {
           new Error(e);
         });
@@ -101,7 +101,10 @@ export class FactorsService {
   }
 
   //fetch current month emission data
-  fetchMonthData(year:number,month:string|number): Observable<string | null> {
+  fetchMonthData(
+    year: number,
+    month: string | number
+  ): Observable<string | null> {
     let url;
     let emissionRecord = new Subject<any>();
     const userID = sessionStorage.getItem('userID');
@@ -110,19 +113,16 @@ export class FactorsService {
     if (month < 10) month = '0' + month;
     let date = `${year}-${month}`;
 
-
     if (userID) {
       url = `http://localhost:8070/api/v1/emissions/${userID}/${date}`;
       this.httpClient.get(url).subscribe({
         next: (response) => {
-
-          if (response){
+          if (response) {
             emissionRecord.next(response);
-
           }
         },
         error: (e) => {
-          emissionRecord.error(e)
+          emissionRecord.error(e);
         },
         complete: () => {
           /**console.info('complete')**/
@@ -147,7 +147,7 @@ export class FactorsService {
           if (response) emissionRecords.next(response);
         },
         error: (e) => {
-          console.error(e);
+          emissionRecords.error(e);
           throwError(() => {
             new Error(e);
           });

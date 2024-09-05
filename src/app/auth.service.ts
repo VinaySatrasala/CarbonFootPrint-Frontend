@@ -11,14 +11,20 @@ export class AuthService {
     token,
     userID,
     country,
+    username,
+    email,
   }: {
     token: string;
     userID: string;
     country: string;
+    username: string;
+    email: string;
   }): void {
     sessionStorage.setItem('token', token);
     sessionStorage.setItem('userID', userID);
     sessionStorage.setItem('country', country);
+    sessionStorage.setItem('username', username);
+    sessionStorage.setItem('email', email);
     this.router.navigate(['/factors']);
   }
 
