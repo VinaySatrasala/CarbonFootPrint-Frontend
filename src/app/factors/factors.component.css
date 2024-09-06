@@ -1,26 +1,38 @@
-.container{
-  min-height: 100vh;
+.u-container {
   display: flex;
   flex-direction: column;
-  gap:50px;
-  justify-content: center;
+  gap: 70px;
   align-items: center;
-  padding: 100px;
+  padding: 70px;
+  margin-bottom: 80px;
 }
 
-.categories{
+.categories {
   display: flex;
-}
-
-.tab{
-  border: solid 1px black;
+  gap: 10px;
+  background-color: #eee;
   padding: 8px;
-  
+  border-radius: 8px;
 }
 
-.form{
+.tab {
+  /* border: solid 1px black; */
+  padding: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 10vw;
+  background-color: #eee;
+}
+
+.selected {
+  background-color: #fff;
+}
+
+.form {
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  width: 50vw;
   width: 50vw;
 }

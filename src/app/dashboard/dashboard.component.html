@@ -1,4 +1,4 @@
-<app-header class="app-header"></app-header >
+<app-header class="app-header"></app-header>
 <div class="d-container">
   <div class="sidebar">
     <div class="avatar-sec">
@@ -195,7 +195,7 @@
       </div>
     </div>
   </ng-container>
-  <div *ngIf="loading" class="indicator">
+  <div *ngIf="loading && !errorWhenFetching" class="indicator">
     <h1>loading...</h1>
   </div>
 

@@ -1,65 +1,111 @@
 <!-- <div class="page-container"> -->
-    <div class="card">
-      <div class="card-header">
-        <h2 class="card-title">Water Usage Estimator</h2>
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Water Usage Estimator</h2>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #form>
+      <div class="form-group">
+        <label>Do you have a lawn or garden that requires watering?</label>
+        <select [(ngModel)]="hasLawn" name="hasLawn" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
       </div>
-      <div class="card-body">
-        <form (ngSubmit)="onSubmit()" #form>
-          <div class="form-group">
-            <label>Do you have a lawn or garden that requires watering?</label>
-            <select [(ngModel)]="hasLawn" name="hasLawn" required>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
 
-          <div class="form-group" *ngIf="hasLawn === 'yes'">
-            <label for="lawnSize">What is the size of your lawn or garden (in square feet)?</label>
-            <input type="number" id="lawnSize" [(ngModel)]="lawnSize" name="lawnSize">
-          </div>
-
-          <div class="form-group" *ngIf="hasLawn === 'yes'">
-            <label for="wateringFrequency">How often do you water your lawn (times per week)?</label>
-            <input type="number" id="wateringFrequency" [(ngModel)]="wateringFrequency" name="wateringFrequency">
-          </div>
-
-          <div class="form-group">
-            <label>Do you have a dishwasher?</label>
-            <select [(ngModel)]="hasDishwasher" name="hasDishwasher" required>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-
-          <div class="form-group" *ngIf="hasDishwasher === 'yes'">
-            <label for="dishwasherUsage">How many times do you use your dishwasher per week?</label>
-            <input type="number" id="dishwasherUsage" [(ngModel)]="dishwasherUsage" name="dishwasherUsage">
-          </div>
-
-          <div class="form-group">
-            <label>Do you have a washing machine?</label>
-            <select [(ngModel)]="hasWashingMachine" name="hasWashingMachine" required>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-
-          <div class="form-group" *ngIf="hasWashingMachine === 'yes'">
-            <label for="washingMachineUsage">How many times do you use your washing machine per week?</label>
-            <input type="number" id="washingMachineUsage" [(ngModel)]="washingMachineUsage" name="washingMachineUsage">
-          </div>
-
-          <div class="form-group">
-            <label>Do you have water-saving fixtures like low-flow showerheads?</label>
-            <select [(ngModel)]="hasWaterSavingFixtures" name="hasWaterSavingFixtures" required>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-block mt-4">Calculate Water Usage</button>
-        </form>
-
+      <div class="form-group" *ngIf="hasLawn === 'yes'">
+        <label for="lawnSize"
+          >What is the size of your lawn or garden (in square feet)?</label
+        >
+        <input
+          type="number"
+          id="lawnSize"
+          [(ngModel)]="lawnSize"
+          name="lawnSize"
+        />
       </div>
-    </div>
-  <!-- </div> -->
+
+      <div class="form-group" *ngIf="hasLawn === 'yes'">
+        <label for="wateringFrequency"
+          >How often do you water your lawn (times per week)?</label
+        >
+        <input
+          type="number"
+          id="wateringFrequency"
+          [(ngModel)]="wateringFrequency"
+          name="wateringFrequency"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Do you have a dishwasher?</label>
+        <select [(ngModel)]="hasDishwasher" name="hasDishwasher" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div class="form-group" *ngIf="hasDishwasher === 'yes'">
+        <label for="dishwasherUsage"
+          >How many times do you use your dishwasher per week?</label
+        >
+        <input
+          type="number"
+          id="dishwasherUsage"
+          [(ngModel)]="dishwasherUsage"
+          name="dishwasherUsage"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Do you have a washing machine?</label>
+        <select
+          [(ngModel)]="hasWashingMachine"
+          name="hasWashingMachine"
+          required
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div class="form-group" *ngIf="hasWashingMachine === 'yes'">
+        <label for="washingMachineUsage"
+          >How many times do you use your washing machine per week?</label
+        >
+        <input
+          type="number"
+          id="washingMachineUsage"
+          [(ngModel)]="washingMachineUsage"
+          name="washingMachineUsage"
+        />
+      </div>
+
+      <div class="form-group">
+        <label
+          >Do you have water-saving fixtures like low-flow showerheads?</label
+        >
+        <select
+          [(ngModel)]="hasWaterSavingFixtures"
+          name="hasWaterSavingFixtures"
+          required
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary btn-block mt-4"
+        [disabled]="alreadySubmitted"
+      >
+        Calculate Water Usage
+      </button>
+      <p class="text-danger" *ngIf="alreadySubmitted"  style="margin-top: 6px;">
+        You have already submitted this month water consumption details
+      </p>
+    </form>
+  </div>
+</div>
+<!-- </div> -->

@@ -1,107 +1,104 @@
 .page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .card {
-    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
-    padding: 30px 20px;
-    border-radius: 15px;
-    width: 550px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-    text-align: center;
-  }
-  
-  .card-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .card-title {
-    font-size: 1.8rem;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .btn-group {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  .btn {
-    flex: 1;
-    padding: 10px;
-    margin: 0 5px;
-    background-color: #ccc;
-    border: none;
+.card {
+  background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+  padding: 30px 20px;
+  border-radius: 15px;
+  width: 40vw;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  text-align: center;
+}
 
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .btn.active {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .btn:hover {
-    background-color: #218838;
-    color: white;
-  }
-  
-  .card-body {
-    text-align: left;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-  }
-  
-  .form-group input:focus,
-  .form-group select:focus {
-    border-color: #28a745; /* Green border on focus */
-    outline: none;
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Optional: Adds a soft glow effect */
-  }
-  
-  .btn-submit {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background-color: #28a745;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-  }
-  
-  .btn-submit:hover {
-    background-color: #218838;
-  }
-  
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  margin: 0 5px;
+  background-color: #ccc;
+  border: none;
+
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn.active {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #218838;
+  color: white;
+}
+
+.card-body {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #555;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #28a745; /* Green border on focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Optional: Adds a soft glow effect */
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.btn-submit:hover {
+  background-color: #218838;
+}

@@ -1,15 +1,22 @@
 <app-header></app-header>
-<div class="container">
+<div class="u-container">
   <div class="categories">
-    <div class="tab" *ngFor="let item of categories" (click)="selectTab(item)">{{item}}</div>
+    <div
+      class="tab"
+      *ngFor="let item of categories"
+      (click)="selectTab(item)"
+      [ngClass]="selectedCategory == item ? 'selected' : ''"
+    >
+      {{ item }}
+    </div>
   </div>
   <div class="form">
-    <app-water />
-    <!-- <app-electricity/>
-    <app-fuels/>
-    <app-transport />
-    <app-waste/>
-    <app-diet/> -->
+    <app-water *ngIf="selectedCategory == 'Water'" />
+    <app-electricity *ngIf="selectedCategory == 'Electricity'" />
+    <app-fuels *ngIf="selectedCategory == 'Domestic Fuel'" />
+    <app-transport *ngIf="selectedCategory == 'Transport'" />
+    <app-waste *ngIf="selectedCategory == 'Waste'" />
+    <app-diet *ngIf="selectedCategory == 'Dietary Habits'" />
   </div>
 </div>
 <app-footer></app-footer>

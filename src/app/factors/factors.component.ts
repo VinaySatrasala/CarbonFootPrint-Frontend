@@ -3,16 +3,43 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-factors',
   templateUrl: './factors.component.html',
-  styleUrls: ['./factors.component.css']
+  styleUrls: ['./factors.component.css'],
 })
 export class FactorsComponent {
-  categories = ['Electricity','Water','Waste','Dietary Habits','Domestic Fuel','Transport']
+  categories: Array<
+    | 'Electricity'
+    | 'Water'
+    | 'Waste'
+    | 'Dietary Habits'
+    | 'Domestic Fuel'
+    | 'Transport'
+  > = [
+    'Electricity',
+    'Water',
+    'Waste',
+    'Dietary Habits',
+    'Domestic Fuel',
+    'Transport',
+  ];
+  selectedCategory:
+    | 'Electricity'
+    | 'Water'
+    | 'Waste'
+    | 'Dietary Habits'
+    | 'Domestic Fuel'
+    | 'Transport' = 'Electricity';
 
-  constructor(private router:Router){}
+  constructor(private router: Router) {}
 
-
-  selectTab(category:string){
-    alert(category)
+  selectTab(
+    category:
+      | 'Electricity'
+      | 'Water'
+      | 'Waste'
+      | 'Dietary Habits'
+      | 'Domestic Fuel'
+      | 'Transport'
+  ) {
+    this.selectedCategory = category;
   }
-
 }
