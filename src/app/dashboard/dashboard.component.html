@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header class="app-header"></app-header >
 <div class="d-container">
   <div class="sidebar">
     <div class="avatar-sec">
@@ -52,16 +52,16 @@
       View Insights
     </a>
   </div>
-  <ng-container *ngIf="!loading && !errorWhenFetching">
-    <div class="imp-card pie">
+  <ng-container *ngIf="!loading && !errorWhenFetching" class="ng-c">
+    <div class="imp-card pie not-sidebar">
       <app-pie-chart
         [emissionPerCategory]="emissionPerCategory"
       ></app-pie-chart>
     </div>
-    <div class="imp-card bar">
+    <div class="imp-card bar not-sidebar">
       <app-history [emissionRecords]="emissionRecords"></app-history>
     </div>
-    <div class="cat-card avg">
+    <div class="cat-card avg not-sidebar">
       <div class="cat-card-row">
         <p>You</p>
         <p style="font-weight: 500">{{ totalEmission.toFixed(2) }} kg</p>
@@ -80,7 +80,7 @@
       </div>
       <div class="country-avg" [ngStyle]="{ width: avgCountryWidth }"></div>
     </div>
-    <div class="cat-card electricity">
+    <div class="cat-card electricity not-sidebar">
       <div class="cat-title-row">
         <p class="cat-card-title">ELECTRICITY</p>
         <img src="assets/lightning.png" alt="" />
@@ -92,7 +92,7 @@
         </p>
       </div>
     </div>
-    <div class="cat-card water">
+    <div class="cat-card water not-sidebar">
       <div class="cat-title-row">
         <p class="cat-card-title">WATER</p>
         <img src="assets/water.png" alt="" />
@@ -104,7 +104,7 @@
         </p>
       </div>
     </div>
-    <div class="cat-card fuel">
+    <div class="cat-card fuel not-sidebar">
       <div class="cat-title-row">
         <p class="cat-card-title">DOMESTIC FUEL</p>
         <img src="assets/lpg.png" alt="" />
@@ -115,14 +115,14 @@
           {{ categories.fuel_sources.lpg.toFixed(2) }}kg
         </p>
       </div>
-      <div class="cat-card-row">
+      <div class="cat-card-row not-sidebar">
         <p>firewood</p>
         <p class="consumption_units">
           {{ categories.fuel_sources.firewood.toFixed(2) }}kg
         </p>
       </div>
     </div>
-    <div class="cat-card travel">
+    <div class="cat-card travel not-sidebar">
       <div class="cat-title-row">
         <p class="cat-card-title">TRAVEL</p>
         <img src="assets/train.png" alt="" />
@@ -152,7 +152,7 @@
         </p>
       </div>
     </div>
-    <div class="cat-card dietary">
+    <div class="cat-card dietary not-sidebar">
       <div class="cat-title-row">
         <p class="cat-card-title">DIETARY HABITS</p>
         <img src="assets/diet.png" alt="" />
@@ -176,7 +176,7 @@
         </p>
       </div>
     </div>
-    <div class="cat-card waste">
+    <div class="cat-card waste not-sidebar">
       <div class="cat-title-row">
         <p class="cat-card-title">WASTE</p>
         <img src="assets/waste.png" alt="" />

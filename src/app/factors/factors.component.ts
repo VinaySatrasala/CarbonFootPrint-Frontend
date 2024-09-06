@@ -6,18 +6,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./factors.component.css']
 })
 export class FactorsComponent {
-  factors = [
-    { label: 'Electricity', image: 'assets/electricity.webp', route: '/electricity' },
-    { label: 'Waste', image: 'assets/waste.webp', route: '/waste' },
-    { label: 'Water', image: 'assets/water.webp', route: '/water' },
-    { label: 'Transport', image: 'assets/transport.webp', route: '/transport' },
-    { label: 'Dietary Habits', image: 'assets/diet.webp', route: '/diet' },
-    { label: 'Domestic Fuels', image: 'assets/demesticfuels.webp', route: '/fuels' },
-  ];
+  categories = ['Electricity','Water','Waste','Dietary Habits','Domestic Fuel','Transport']
 
   constructor(private router:Router){}
-  clicked(route:string){
-    this.router.navigate([route]);
+
+
+  selectTab(category:string){
+    alert(category)
   }
 
 }

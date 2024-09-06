@@ -1,12 +1,15 @@
 <app-header></app-header>
-<div class="container-wrapper">
-  <div class="container justify-content-center align-content-center">
-    <div class="card" *ngFor="let factor of factors">
-      <img [src]="factor.image" class="card-img" alt="{{ factor.label }} image" (click)="clicked(factor.route)">
-      <div class="card-body text-center">
-        <h5 class="">{{ factor.label }}</h5>
-      </div>
-    </div>
+<div class="container">
+  <div class="categories">
+    <div class="tab" *ngFor="let item of categories" (click)="selectTab(item)">{{item}}</div>
+  </div>
+  <div class="form">
+    <app-water />
+    <!-- <app-electricity/>
+    <app-fuels/>
+    <app-transport />
+    <app-waste/>
+    <app-diet/> -->
   </div>
 </div>
 <app-footer></app-footer>

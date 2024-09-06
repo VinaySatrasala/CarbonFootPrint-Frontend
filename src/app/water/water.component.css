@@ -1,10 +1,10 @@
 .page-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    /* align-items: center; */
+    /* overflow: scroll; */
   }
-  
+
   .card {
     background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
     padding: 30px 20px;
@@ -13,31 +13,31 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
     text-align: center;
   }
-  
+
   .card-header {
     margin-bottom: 20px;
   }
-  
+
   .card-title {
     font-size: 1.8rem;
     color: #333;
     font-weight: bold;
     margin-bottom: 10px;
   }
-  
+
   .card-body {
     text-align: left;
   }
-  
+
   .form-group {
     margin-bottom: 15px;
   }
-  
+
   .form-group label {
     font-size: 1rem;
     color: #555;
   }
-  
+
   .form-group input,
   .form-group select {
     width: 100%;
@@ -47,15 +47,15 @@
     font-size: 1rem;
     transition: border-color 0.3s;
   }
-  
+
   .form-group input:focus,
   .form-group select:focus {
     border-color: #28a745; /* Green border on focus */
     outline: none;
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Optional: Adds a soft glow effect */
-    
+
   }
-  
+
   .btn {
     width: 100%;
     padding: 12px;
@@ -67,21 +67,21 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
   .btn:hover {
     background-color: #218838;
   }
-  
+
   .result {
     margin-top: 20px;
     text-align: center;
   }
-  
+
   .result h3 {
     font-size: 1.5rem;
     color: #333;
   }
-  
+
   .result p {
     font-size: 1.2rem;
     color: #555;
