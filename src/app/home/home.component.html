@@ -5,12 +5,12 @@
         <a [routerLink]="['']" class="navbar-brand logo"> Carbon Sense </a>
         <div class="d-flex align-items-center">
           <button
-            class="btn btn-signin"
+            class="btn btn-signin header-action-btn"
             id="logout-btn"
             aria-label="sign in"
             (click)="signin()"
           >
-            Signin
+            Sign in
           </button>
         </div>
       </div>
@@ -28,7 +28,7 @@
       oceans and devastation of our forests. It's up to all of us to fix it.
       Take your first step with our UK based environmental footprint calculator.
     </p>
-    <button class="btn btn-dark">Get Started</button>
+    <button class="btn btn-dark" (click)="signin()">Get Started</button>
   </div>
   <div class="right">
     <img src="assets/landing_image.jpg" alt="" />

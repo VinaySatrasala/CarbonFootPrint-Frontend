@@ -21,9 +21,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: '', component: HomeComponent },
-  { path: 'factors', component: FactorsComponent
-    , canActivate: [authGuard]
-  },
+  { path: 'factors', component: FactorsComponent, canActivate: [authGuard] },
   { path: 'water', component: WaterComponent, canActivate: [authGuard] },
   {
     path: 'electricity',
@@ -42,13 +40,12 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [authGuard],
-  },{
-    path:'insights',
-    component:InsightsComponent
-  },{
-    path:'horizontal',
-    component:HorizontalBarComponent
-  }
+  },
+  {
+    path: 'insights',
+    component: InsightsComponent,
+    canActivate: [authGuard],
+  },
 ];
 
 @NgModule({

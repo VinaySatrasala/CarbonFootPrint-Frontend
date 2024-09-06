@@ -21,7 +21,7 @@
       <option *ngFor="let item of months" [value]="item">{{ item }}</option>
     </select>
 
-    <a style="--clr: #7808d0" class="button" href="#">
+    <a style="--clr: #7808d0" class="button" (click)="viewInsights()">
       <span class="button__icon-wrapper">
         <svg
           width="10"
@@ -195,9 +195,7 @@
       </div>
     </div>
   </ng-container>
-  <div *ngIf="loading && !errorWhenFetching" class="indicator">
-    <h1>loading...</h1>
-  </div>
+  <app-loading *ngIf="loading && !errorWhenFetching" class="indicator" />
 
   <div *ngIf="errorWhenFetching" class="indicator">
     <h1>No records found for user in the selected time period</h1>

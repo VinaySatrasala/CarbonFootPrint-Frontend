@@ -3,6 +3,7 @@ import { RadialBarChartComponent } from '../radial-bar-chart/radial-bar-chart.co
 import { AppModule } from '../app.module';
 import { FactorsService } from '../factors.service';
 import { flush } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -54,7 +55,7 @@ export class DashboardComponent implements OnInit {
   selectedMonth!: any;
   selectedYear!: any;
 
-  constructor(private fatcorsService: FactorsService) {
+  constructor(private fatcorsService: FactorsService, private router: Router) {
     this.username = sessionStorage.getItem('username')!;
     this.email = sessionStorage.getItem('email')!;
     let year = new Date().getFullYear();
@@ -200,5 +201,9 @@ export class DashboardComponent implements OnInit {
   updateData() {
     this.updateMonthData();
     this.updateYearData();
+  }
+
+  viewInsights(): void {
+    this.router.navigate(['/insights']);
   }
 }
