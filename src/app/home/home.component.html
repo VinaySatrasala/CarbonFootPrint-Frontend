@@ -1,14 +1,36 @@
-<div class="body-class">
-
-    <!-- Introduction Section -->
-    <div class="intro-section d-flex justify-content-center align-items-center text-center">
-      <div class="intro-text">
-        <h2>Welcome to CarbonSense</h2>
-        <p>Take control of your carbon footprint and contribute to a greener future.</p>
-        <a href="/factors" class="btn btn-success btn-lg">Get Started</a>
+<div id="top" class="maincontainer">
+  <header id="home" class="header">
+    <div class="header-top navbar navbar-expand-lg">
+      <div class="container">
+        <a [routerLink]="['']" class="navbar-brand logo"> Carbon Sense </a>
+        <div class="d-flex align-items-center">
+          <button
+            class="btn btn-signin"
+            id="logout-btn"
+            aria-label="sign in"
+            (click)="signin()"
+          >
+            Signin
+          </button>
+        </div>
       </div>
     </div>
+  </header>
+</div>
 
-    <!-- Footer -->
-
+<div class="d-flex main-div">
+  <div class="p-6 left">
+    <h1 class="page-heading fw-bold">
+      HOW BIG IS YOUR ENVIRONMENTAL FOOTPRINT?
+    </h1>
+    <p class="page-content fw-semibold">
+      Our world is in crisis - from climate change to the pollution in our
+      oceans and devastation of our forests. It's up to all of us to fix it.
+      Take your first step with our UK based environmental footprint calculator.
+    </p>
+    <button class="btn btn-dark">Get Started</button>
   </div>
+  <div class="right">
+    <img src="assets/landing_image.jpg" alt="" />
+  </div>
+</div>

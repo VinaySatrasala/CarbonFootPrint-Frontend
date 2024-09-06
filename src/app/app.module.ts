@@ -25,6 +25,9 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { HistoryComponent } from './history/history.component';
+import { InsightsComponent } from './insights/insights.component';
+import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { HistoryComponent } from './history/history.component';
     RadialBarChartComponent,
     DashboardComponent,
     PieChartComponent,
-    HistoryComponent
+    HistoryComponent,
+    InsightsComponent,
+    HorizontalBarComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

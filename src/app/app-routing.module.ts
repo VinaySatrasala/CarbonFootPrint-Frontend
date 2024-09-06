@@ -14,6 +14,8 @@ import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.com
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './auth.guard';
 import { HistoryComponent } from './history/history.component';
+import { InsightsComponent } from './insights/insights.component';
+import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -40,6 +42,12 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [authGuard],
+  },{
+    path:'insights',
+    component:InsightsComponent
+  },{
+    path:'horizontal',
+    component:HorizontalBarComponent
   }
 ];
 

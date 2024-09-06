@@ -1,5 +1,5 @@
 import { FactorsService } from './../factors.service';
-import { Component, ErrorHandler, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,8 +9,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, ObservableInput, catchError, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { catchError, tap, throwError } from 'rxjs';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,42 +19,45 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  countries: string[] =[];
+  countries: string[] = [];
+  match: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private httpClient: HttpClient,
     private router: Router,
-    private factorsService : FactorsService
+    private factorsService: FactorsService
   ) {
-    this.signupForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      re_password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          this.passwordConfirmationValidator(),
-        ],
-      ],
-      email: ['', [Validators.required, Validators.email]],
-      country: ['', Validators.required],
-    });
+    this.signupForm = this.fb.group(
+      {
+        username: ['', [Validators.required, Validators.minLength(3)]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        re_password: ['', [Validators.required, Validators.minLength(6)]],
+        email: ['', [Validators.required, Validators.email]],
+        country: ['', Validators.required],
+      },
+      {
+        validators: this.passwordConfirmationValidator(), // Apply the custom validator to the form group
+      }
+    );
   }
 
   ngOnInit(): void {
-      this.factorsService.getCountryRecords().subscribe({
-        next:(response) => {
-
-            for(let elt of response){
-              this.countries.push(elt['Country'])
-            }
-        },
-        error:(err)=>{
-          console.error(err)
+    this.factorsService.getCountryRecords().subscribe({
+      next: (response) => {
+        for (let elt of response) {
+          this.countries.push(elt['Country']);
         }
-      })
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+
+    // Revalidate confirm password when password field changes
+    this.signupForm.get('password')?.valueChanges.subscribe(() => {
+      this.signupForm.get('re_password')?.updateValueAndValidity();
+    });
   }
 
   onSubmit(): void {
@@ -86,29 +90,19 @@ export class SignupComponent implements OnInit {
 
   passwordConfirmationValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      if (
-        this.signupForm &&
-        this.signupForm.get('password') &&
-        this.signupForm.get('re_password') &&
-        this.signupForm.get('password')?.value !=
-          this.signupForm.get('re_password')?.value
-      ) {
-        return {
-          passwordsNotMatching: true,
-        };
-      } else return null;
+      const password = control.get('password');
+      const confirmPassword = control.get('re_password');
+
+      if (password && confirmPassword && password.value !== confirmPassword.value) {
+        return { passwordsNotMatching: true };
+      }
+      return null;
     };
   }
 
-  //handle errors
-  handleError(error: HttpErrorResponse, caught: ObservableInput<any>) {
-    if (error) {
-      //redundant
-      if (error.error) console.log(error.error);
-      return throwError(() => {
-        new Error('something bad happened : ' + error.error);
-      });
-    }
-    return caught;
+  // Handle errors
+  handleError(error: HttpErrorResponse) {
+    console.error('Error occurred:', error);
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }

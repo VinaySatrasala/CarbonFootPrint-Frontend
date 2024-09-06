@@ -1,0 +1,20 @@
+<app-header></app-header>
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 p-3" >
+    <div *ngIf="loading" class="text-center">
+        <!-- <h3>Fetching... Please wait</h3> -->
+         <app-loading></app-loading>
+    </div>
+    <div class="card shadow-lg" style="width: 50rem;" *ngIf="!loading">
+        <div class="card-body">
+            <div *ngFor="let insight of insights" class="mb-4">
+                <h5 class="card-title">{{insight.category}}</h5>
+                <p class="card-text">{{insight.insight}}</p>
+            </div>
+            <div class="mt-4">
+                <h5 class="card-title">Overall</h5>
+                <p class="card-text">{{res.general}}</p>
+            </div>
+        </div>
+    </div>
+</div>
