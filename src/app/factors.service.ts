@@ -100,7 +100,15 @@ export class FactorsService {
     return success;
   }
 
-  //fetch current month emission data
+  //fetch current month data
+  fetchCurrentMonthData(): Observable<string | null> {
+    let year = new Date().getFullYear();
+    let month: any = new Date().getMonth();
+    month = this.months[month];
+    return this.fetchMonthData(year, month);
+  }
+
+  //fetch any month emission data
   fetchMonthData(
     year: number,
     month: string | number
