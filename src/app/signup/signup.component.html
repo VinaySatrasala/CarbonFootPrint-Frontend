@@ -1,6 +1,6 @@
-<div class="body-class">
+<div class="body-class d-flex flex-column justify-content-center">
   <div class="text-center">
-    <h1 class="pg-heading">C🍃RBON SENSE</h1>
+    <h1 class="pg-heading">Carbon Sense</h1>
   </div>
   <div class="d-flex justify-content-center align-items-center">
     <div class="card p-4 shadow">
@@ -15,11 +15,22 @@
               required
               class="form-control"
             />
-            <div *ngIf="signupForm.get('username')?.touched && signupForm.get('username')?.invalid">
-              <small *ngIf="signupForm.get('username')?.errors?.['required']" class="text-danger">
+            <div
+              *ngIf="
+                signupForm.get('username')?.touched &&
+                signupForm.get('username')?.invalid
+              "
+            >
+              <small
+                *ngIf="signupForm.get('username')?.errors?.['required']"
+                class="text-danger"
+              >
                 Username is required.
               </small>
-              <small *ngIf="signupForm.get('username')?.errors?.['minlength']" class="text-danger">
+              <small
+                *ngIf="signupForm.get('username')?.errors?.['minlength']"
+                class="text-danger"
+              >
                 Username must be at least 3 characters long.
               </small>
             </div>
@@ -34,11 +45,22 @@
               required
               class="form-control"
             />
-            <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
-              <small *ngIf="signupForm.get('password')?.errors?.['required']" class="text-danger">
+            <div
+              *ngIf="
+                signupForm.get('password')?.touched &&
+                signupForm.get('password')?.invalid
+              "
+            >
+              <small
+                *ngIf="signupForm.get('password')?.errors?.['required']"
+                class="text-danger"
+              >
                 Password is required.
               </small>
-              <small *ngIf="signupForm.get('password')?.errors?.['minlength']" class="text-danger">
+              <small
+                *ngIf="signupForm.get('password')?.errors?.['minlength']"
+                class="text-danger"
+              >
                 Password must be at least 6 characters long.
               </small>
             </div>
@@ -54,8 +76,13 @@
             required
             class="form-control"
           />
-          <div *ngIf="signupForm.get('re_password')?.touched && signupForm.invalid">
-            <small *ngIf="signupForm.get('re_password')?.errors?.['required']" class="text-danger">
+          <div
+            *ngIf="signupForm.get('re_password')?.touched && signupForm.invalid"
+          >
+            <small
+              *ngIf="signupForm.get('re_password')?.errors?.['required']"
+              class="text-danger"
+            >
               Please confirm password.
             </small>
             <small
@@ -76,11 +103,22 @@
             required
             class="form-control"
           />
-          <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
-            <small *ngIf="signupForm.get('email')?.errors?.['required']" class="text-danger">
+          <div
+            *ngIf="
+              signupForm.get('email')?.touched &&
+              signupForm.get('email')?.invalid
+            "
+          >
+            <small
+              *ngIf="signupForm.get('email')?.errors?.['required']"
+              class="text-danger"
+            >
               Email is required.
             </small>
-            <small *ngIf="signupForm.get('email')?.errors?.['email']" class="text-danger">
+            <small
+              *ngIf="signupForm.get('email')?.errors?.['email']"
+              class="text-danger"
+            >
               Please enter a valid email address.
             </small>
           </div>
@@ -88,19 +126,38 @@
 
         <div class="form-group">
           <label for="country">Country</label>
-          <select id="country" formControlName="country" required class="form-control">
+          <select
+            id="country"
+            formControlName="country"
+            required
+            class="form-control"
+          >
             <option value="">Select a country</option>
-            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+            <option *ngFor="let country of countries" [value]="country">
+              {{ country }}
+            </option>
           </select>
-          <div *ngIf="signupForm.get('country')?.touched && signupForm.get('country')?.invalid">
-            <small *ngIf="signupForm.get('country')?.errors?.['required']" class="text-danger">
+          <div
+            *ngIf="
+              signupForm.get('country')?.touched &&
+              signupForm.get('country')?.invalid
+            "
+          >
+            <small
+              *ngIf="signupForm.get('country')?.errors?.['required']"
+              class="text-danger"
+            >
               Country is required.
             </small>
           </div>
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-success form-control" [disabled]="signupForm.invalid">
+          <button
+            type="submit"
+            class="btn btn-success form-control"
+            [disabled]="signupForm.invalid"
+          >
             Create My Account
           </button>
         </div>

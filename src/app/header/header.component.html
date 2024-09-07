@@ -5,7 +5,7 @@
         <a [routerLink]="['']" class="navbar-brand logo"> Carbon Sense </a>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto navbar-list">
+          <ul class="navbar-nav me-auto navbar-list" *ngIf="isLoggedIn">
             <li class="nav-item">
               <a class="nav-link navbar-link" [routerLink]="['/']">Home</a>
             </li>
@@ -24,14 +24,39 @@
             </li>
           </ul>
 
+          <ul class="navbar-nav me-auto navbar-list" *ngIf="!isLoggedIn">
+            <li class="nav-item">
+              <a class="nav-link navbar-link" [routerLink]="['/']">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navbar-link" [routerLink]="['/']">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navbar-link" [routerLink]="['/']">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navbar-link" [routerLink]="['/']">FAQ</a>
+            </li>
+          </ul>
+
           <div class="d-flex align-items-center">
             <button
+              *ngIf="isLoggedIn"
               class="btn btn-outline-danger header-action-btn"
               id="logout-btn"
               aria-label="sign out"
               (click)="signOut()"
             >
-              logout
+              Logout
+            </button>
+            <button
+              *ngIf="!isLoggedIn"
+              class="btn header-action-btn"
+              id="signin-btn"
+              aria-label="sign in"
+              (click)="signIn()"
+            >
+              Sign in
             </button>
           </div>
         </div>

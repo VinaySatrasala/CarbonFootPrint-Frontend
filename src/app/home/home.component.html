@@ -1,21 +1,5 @@
 <div id="top" class="maincontainer">
-  <header id="home" class="header">
-    <div class="header-top navbar navbar-expand-lg">
-      <div class="container">
-        <a [routerLink]="['']" class="navbar-brand logo"> Carbon Sense </a>
-        <div class="d-flex align-items-center">
-          <button
-            class="btn btn-signin header-action-btn"
-            id="logout-btn"
-            aria-label="sign in"
-            (click)="signin()"
-          >
-            Sign in
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
+  <app-header></app-header>
 </div>
 
 <div class="d-flex main-div">
@@ -28,7 +12,7 @@
       oceans and devastation of our forests. It's up to all of us to fix it.
       Take your first step with our UK based environmental footprint calculator.
     </p>
-    <button class="btn btn-dark" (click)="signin()">Get Started</button>
+    <button class="btn btn-dark" (click)="signIn()">Get Started</button>
   </div>
   <div class="right">
     <img src="assets/landing_image.jpg" alt="" />

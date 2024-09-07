@@ -14,7 +14,14 @@
 #logout-btn:hover {
   background-color: #ac0112 !important;
 }
+#signin-btn {
+  color: black;
+  background-color: rgb(15, 189, 15) !important;
+}
 
+#signin-btn:hover {
+  background-color: rgb(6, 96, 6) !important;
+}
 .navbar {
   background-color: black;
   padding: 10px 20px;

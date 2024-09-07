@@ -8,9 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private router: Router, private authService: AuthService) {}
+  isLoggedIn: boolean = false;
+  constructor(private router: Router, private authService: AuthService) {
+    if (sessionStorage.getItem('token')) this.isLoggedIn = true;
+  }
 
   signOut() {
     this.authService.logout();
+    this.isLoggedIn = false;
+  }
+
+  signIn() {
+    this.router.navigate(['/factors']);
+    this.isLoggedIn = true;
   }
 }

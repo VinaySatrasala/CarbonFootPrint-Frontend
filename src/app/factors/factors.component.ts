@@ -14,8 +14,8 @@ export class FactorsComponent {
     | 'Domestic Fuel'
     | 'Transport'
   > = [
-    'Water',
     'Waste',
+    'Water',
     'Electricity',
     'Dietary Habits',
     'Domestic Fuel',
@@ -27,7 +27,7 @@ export class FactorsComponent {
     | 'Waste'
     | 'Dietary Habits'
     | 'Domestic Fuel'
-    | 'Transport' = 'Electricity';
+    | 'Transport' = 'Waste';
 
   constructor(private router: Router) {}
 
