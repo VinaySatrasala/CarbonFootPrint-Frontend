@@ -11,7 +11,8 @@ import {
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, tap, throwError } from 'rxjs';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -26,7 +27,8 @@ export class SignupComponent implements OnInit {
     private fb: FormBuilder,
     private httpClient: HttpClient,
     private router: Router,
-    private factorsService: FactorsService
+    private factorsService: FactorsService,
+    private snackBar: MatSnackBar
   ) {
     this.signupForm = this.fb.group(
       {
@@ -70,6 +72,13 @@ export class SignupComponent implements OnInit {
           tap((data) => {
             console.log('server response : ' + data);
             this.signupForm.reset();
+            this.snackBar.openFromComponent(SnackbarComponent, {
+              data: { message: 'Account created successfully' },
+              duration: 1500,
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              panelClass: ['success-snackbar'],
+            });
             this.router.navigate(['/signin']);
           }),
           catchError(this.handleError)
@@ -93,7 +102,11 @@ export class SignupComponent implements OnInit {
       const password = control.get('password');
       const confirmPassword = control.get('re_password');
 
-      if (password && confirmPassword && password.value !== confirmPassword.value) {
+      if (
+        password &&
+        confirmPassword &&
+        password.value !== confirmPassword.value
+      ) {
         return { passwordsNotMatching: true };
       }
       return null;
@@ -103,6 +116,8 @@ export class SignupComponent implements OnInit {
   // Handle errors
   handleError(error: HttpErrorResponse) {
     console.error('Error occurred:', error);
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
   }
 }
