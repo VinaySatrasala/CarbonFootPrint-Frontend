@@ -32,6 +32,7 @@ import { InsightsComponent } from './insights/insights.component';
 import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
 import { LoadingComponent } from './loading/loading.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { NorecordComponent } from "./norecord/norecord.component";
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ReactiveFormsModule,
     NgApexchartsModule,
     HttpClientModule,
-  ],
+    NorecordComponent
+],
   providers: [
     provideHttpClient(withInterceptors([TokenInterceptorService])),
     provideAnimationsAsync(),

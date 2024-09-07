@@ -197,9 +197,11 @@
   </ng-container>
   <app-loading *ngIf="loading && !errorWhenFetching" class="indicator" />
 
-  <div *ngIf="errorWhenFetching" class="indicator">
-    <h1>No records found for user in the selected time period</h1>
-  </div>
+  <app-norecord
+    class="indicator"
+    *ngIf="errorWhenFetching"
+    [message]="'No records found for user in the selected time period'"
+  ></app-norecord>
 </div>
 <app-footer *ngIf="!loading && !errorWhenFetching"></app-footer>
 
