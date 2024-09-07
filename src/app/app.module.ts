@@ -32,7 +32,8 @@ import { InsightsComponent } from './insights/insights.component';
 import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
 import { LoadingComponent } from './loading/loading.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { NorecordComponent } from "./norecord/norecord.component";
+import { NorecordComponent } from './norecord/norecord.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { NorecordComponent } from "./norecord/norecord.component";
     InsightsComponent,
     HorizontalBarComponent,
     LoadingComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,8 +66,8 @@ import { NorecordComponent } from "./norecord/norecord.component";
     ReactiveFormsModule,
     NgApexchartsModule,
     HttpClientModule,
-    NorecordComponent
-],
+    NorecordComponent,
+  ],
   providers: [
     provideHttpClient(withInterceptors([TokenInterceptorService])),
     provideAnimationsAsync(),

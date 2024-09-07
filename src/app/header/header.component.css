@@ -3,9 +3,11 @@
   font-weight: bold;
 }
 
-/* .container{
-  margin-left: 2vw !important;
-} */
+.container{
+  
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
 
 .header * {
   color: #fff !important;
@@ -28,14 +30,23 @@
 }
 
 .logo {
-  font-size: 24px; /* Increased the font size of the logo */
+  font-size: 34px; /* Increased the font size of the logo */
   font-weight: bold;
+  font-style: italic;
   text-decoration: none;
 }
 
-.navbar-link {
-  font-size: 18px; /* Increased the font size of the navbar links */
+.navbar-brand{
+  margin-right: 11vw !important;
+}
 
+.navbar-link {
+  font-size: 16px;
+  color: #fff;
+  margin-right: 50px;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  letter-spacing: 3px;
   padding: 10px 15px;
 }
 

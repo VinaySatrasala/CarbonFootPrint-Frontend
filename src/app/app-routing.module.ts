@@ -17,6 +17,7 @@ import { HistoryComponent } from './history/history.component';
 import { InsightsComponent } from './insights/insights.component';
 import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -46,6 +47,10 @@ const routes: Routes = [
     path: 'insights',
     component: InsightsComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'landing',
+    component: LandingComponent,
   },
   {
     path: '**',
