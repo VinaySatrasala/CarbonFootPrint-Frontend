@@ -33,6 +33,12 @@
   margin-top: 10px;
   background-color: black;
   border-color: black;
+  color: #fff;
+}
+
+.btn-success:focus {
+  border-color: black;
+  box-shadow: 0 0 5px black;
 }
 
 .form-row {

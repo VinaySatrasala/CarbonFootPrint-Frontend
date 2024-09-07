@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   ObservableInput,
   catchError,
@@ -11,6 +11,7 @@ import {
   throwError,
 } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 @Component({
   selector: 'app-signin',
@@ -26,7 +27,8 @@ export class SigninComponent implements OnInit {
     private fb: FormBuilder,
     private httpClient: HttpClient,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) {
     this.signinForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -67,7 +69,14 @@ export class SigninComponent implements OnInit {
       //redundant
       if (error.error) {
         this.loginError = true;
-        this.errorMsg = error.error;
+        this.snackBar.openFromComponent(SnackbarComponent, {
+          data: { message: 'Invalid Credentials', error: true },
+          duration: 1500,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar'],
+        });
+        // this.errorMsg = error.error;
         console.log(error.error);
       }
       return throwError(() => {

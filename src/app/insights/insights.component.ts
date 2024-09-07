@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { FactorsService } from '../factors.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-insights',
@@ -58,7 +58,11 @@ export class InsightsComponent implements OnInit {
     required: ['insights'],
   };
 
-  constructor(private service: FactorsService, private route: ActivatedRoute) {
+  constructor(
+    private service: FactorsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.genAI = new GoogleGenerativeAI(this.API_KEY);
     this.selectedMonth = this.route.snapshot.paramMap.get('month');
     this.selectedYear = this.route.snapshot.paramMap.get('year');
@@ -130,5 +134,9 @@ export class InsightsComponent implements OnInit {
         error
       );
     }
+  }
+
+  goBack(): void {
+    this.router.navigate(['/dashboard']);
   }
 }

@@ -25,6 +25,17 @@
   background-color: black;
   border-color: black;
   margin-top: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-success:disabled {
+  background-color: rgb(93, 92, 92);
+}
+
+.btn-success:focus {
+  border-color: black;
+  box-shadow: 0 0 5px black;
 }
 
 .form-row {

@@ -38,10 +38,12 @@
     <!-- <h3>Fetching... Please wait</h3> -->
     <app-loading></app-loading>
   </div>
-  <app-norecord
-    class="error"
-    *ngIf="error"
-    [message]="'No insights found for user in the selected time period'"
-  ></app-norecord>
+  <div class="error no-insight" *ngIf="error">
+    <app-norecord
+      [message]="'No insights found for user in the selected time period'"
+    >
+      <button class="btn-go" (click)="goBack()">Go Back</button>
+    </app-norecord>
+  </div>
 </div>
 <app-footer></app-footer>
