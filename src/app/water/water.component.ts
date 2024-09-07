@@ -104,10 +104,14 @@ export class WaterComponent implements OnInit {
             .updateRecord('water', body, emissionID)
             .subscribe({
               next: (success) => {
-                if (success) this.reset();
+                if (success) {
+                  this.factorsService.alertSubmitStatus('success');
+                  this.reset();
+                }
               },
               error: (err) => {
                 console.log(err);
+                this.factorsService.alertSubmitStatus('error');
               },
             });
         }

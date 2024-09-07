@@ -9,17 +9,17 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 90vh;
-  padding: 0 300px;
+  padding: 80px 300px 100px 300px;
   max-width: 100vw;
   gap: 50px;
 }
 
-.img-n-title{
-    display: flex;
-    justify-content: space-between;
+.img-n-title {
+  display: flex;
+  justify-content: space-between;
 }
-img{
-    width: 30px;
+img {
+  width: 30px;
 }
 
 h3 {

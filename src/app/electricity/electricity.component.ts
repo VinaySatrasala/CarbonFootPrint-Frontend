@@ -7,40 +7,45 @@ import { setThrowInvalidWriteToSignalError } from '@angular/core/primitives/sign
 @Component({
   selector: 'app-electricity',
   templateUrl: './electricity.component.html',
-  styleUrls: ['./electricity.component.css']
+  styleUrls: ['./electricity.component.css'],
 })
 export class ElectricityComponent {
-  units!:number;
+  units!: number;
   @ViewChild('form')
-  form:any;
+  form: any;
 
-
-
-  constructor(private factorsService : FactorsService,private HttpClient:HttpClient){}
+  constructor(
+    private factorsService: FactorsService,
+    private HttpClient: HttpClient
+  ) {}
 
   onSubmit() {
     // Logic to handle form submission
     this.factorsService.putRecordIfAbsent().subscribe({
-      next:(emissionID)=>{
+      next: (emissionID) => {
+        let body = {
+          electricity: {
+            kwh_used: this.units,
+          },
+        };
 
-        let body = {electricity:{
-            kwh_used : this.units
-        }}
-
-        if(emissionID){
-
-          this.factorsService.updateRecord('electricity',body,emissionID).subscribe({
-            next:(success)=>{
-              if(success)
-                this.form.nativeElement.reset()
-            },
-            error:(err)=>{console.log(err);
-            }
-          })
-      }
-    }
-
-  })
-
+        if (emissionID) {
+          this.factorsService
+            .updateRecord('electricity', body, emissionID)
+            .subscribe({
+              next: (success) => {
+                if (success) {
+                  this.form.nativeElement.reset();
+                  this.factorsService.alertSubmitStatus('success');
+                }
+              },
+              error: (err) => {
+                console.log(err);
+                this.factorsService.alertSubmitStatus('error');
+              },
+            });
+        }
+      },
+    });
   }
 }

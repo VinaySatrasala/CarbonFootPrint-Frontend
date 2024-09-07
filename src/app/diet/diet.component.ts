@@ -4,7 +4,7 @@ import { Component, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-diet',
   templateUrl: './diet.component.html',
-  styleUrls: ['./diet.component.css']
+  styleUrls: ['./diet.component.css'],
 })
 export class DietComponent {
   meatConsumption: string = 'not-had';
@@ -16,38 +16,32 @@ export class DietComponent {
   vegetablesSelected: boolean = false;
   fruitsSelected: boolean = false;
 
-
   meatIntakeKg: number | null = null;
   dairyIntakeKg: number | null = null;
   otherIntakeKg: number | null = null;
 
   @ViewChild('form')
-  form:any
+  form: any;
 
-  constructor(private factorsService:FactorsService){}
+  constructor(private factorsService: FactorsService) {}
 
   calculateDietaryImpact() {
-
-    this.meatIntakeKg = 0
-    this.dairyIntakeKg = 0
-    this.otherIntakeKg = 0
+    this.meatIntakeKg = 0;
+    this.dairyIntakeKg = 0;
+    this.otherIntakeKg = 0;
 
     // Meat Consumption Calculation
     switch (this.meatConsumption) {
       case 'not-had':
-
         this.meatIntakeKg += 0;
         break;
       case 'light':
-
         this.meatIntakeKg += 0.15; // Example: 150g for light meal
         break;
       case 'medium':
-
         this.meatIntakeKg += 0.3; // Example: 300g for medium meal
         break;
       case 'heavy':
-
         this.meatIntakeKg += 0.5; // Example: 500g for heavy meal
         break;
     }
@@ -81,39 +75,38 @@ export class DietComponent {
     if (this.fruitsSelected) {
       this.otherIntakeKg += 0.2; // Example: 200g for fruits
     }
-
-
   }
-
-
 
   onSubmit() {
     // Logic to handle form submission
-    this.calculateDietaryImpact()
+    this.calculateDietaryImpact();
     this.factorsService.putRecordIfAbsent().subscribe({
-      next:(emissionID)=>{
-         let body = {dietary_habits:{
-            other_consumption:this.otherIntakeKg,
-            meat_consumption:this.meatIntakeKg,
-            dairy_consumption:this.dairyIntakeKg
-        }}
+      next: (emissionID) => {
+        let body = {
+          dietary_habits: {
+            other_consumption: this.otherIntakeKg,
+            meat_consumption: this.meatIntakeKg,
+            dairy_consumption: this.dairyIntakeKg,
+          },
+        };
 
-        if(emissionID){
-
-          this.factorsService.updateRecord('dietary_habits',body,emissionID).subscribe({
-            next:(success)=>{
-              if(success)
-                this.form.nativeElement.reset()
-            },
-            error:(err)=>{console.log(err);
-            }
-          })
-      }
-    }
-
-  })
-
+        if (emissionID) {
+          this.factorsService
+            .updateRecord('dietary_habits', body, emissionID)
+            .subscribe({
+              next: (success) => {
+                if (success) {
+                  this.form.nativeElement.reset();
+                  this.factorsService.alertSubmitStatus('success');
+                }
+              },
+              error: (err) => {
+                console.log(err);
+                this.factorsService.alertSubmitStatus('error');
+              },
+            });
+        }
+      },
+    });
   }
 }
-
-

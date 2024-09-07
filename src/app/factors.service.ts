@@ -26,6 +26,10 @@ export class FactorsService {
     'November',
     'December',
   ];
+
+  private submitStatusSource = new Subject<string>();
+  submitStatus$ = this.submitStatusSource.asObservable();
+
   constructor(private httpClient: HttpClient) {}
 
   /**checks if current user already has an emission record for current month
@@ -43,27 +47,26 @@ export class FactorsService {
       url = `http://localhost:8070/api/v1/emissions/${userID}/${date}`;
       this.httpClient.get(url).subscribe({
         next: (response) => {
-          if (!response) {
-            url = 'http://localhost:8070/api/v1/emissions';
-            let body = { userID: userID, date: date };
-            this.httpClient.post(url, body).subscribe({
-              next: (response) => {
-                emissionIDSource.next((response as any)['id']);
-              },
-              error: (e) => emissionIDSource.error(e),
-              complete: () => {
-                /**console.info('complete')**/
-              },
-            });
-          } else {
+          if (response) {
             emissionIDSource.next((response as any)['id']);
           }
         },
         error: (e) => {
-          console.error(e);
-          throwError(() => {
-            new Error(e);
+          url = 'http://localhost:8070/api/v1/emissions';
+          let body = { userID: userID, date: date };
+          this.httpClient.post(url, body).subscribe({
+            next: (response) => {
+              emissionIDSource.next((response as any)['id']);
+            },
+            error: (e) => emissionIDSource.error(e),
+            complete: () => {
+              /**console.info('complete')**/
+            },
           });
+          console.warn(e);
+          // throwError(() => {
+          //   new Error(e);
+          // });
         },
         complete: () => {
           /**console.info('complete')**/
@@ -93,7 +96,7 @@ export class FactorsService {
       },
       complete: () => {
         /**console.info('complete')**/
-        success.next(true);
+        // success.next(true);
       },
     });
 
@@ -166,5 +169,9 @@ export class FactorsService {
       });
     }
     return emissionRecords;
+  }
+
+  alertSubmitStatus(status: string): void {
+    this.submitStatusSource.next(status);
   }
 }

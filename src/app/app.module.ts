@@ -19,8 +19,11 @@ import { DietComponent } from './diet/diet.component';
 import { FuelsComponent } from './fuels/fuels.component';
 import { RadialBarChartComponent } from './radial-bar-chart/radial-bar-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
-
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
@@ -28,6 +31,7 @@ import { HistoryComponent } from './history/history.component';
 import { InsightsComponent } from './insights/insights.component';
 import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.component';
 import { LoadingComponent } from './loading/loading.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,7 @@ import { LoadingComponent } from './loading/loading.component';
     HistoryComponent,
     InsightsComponent,
     HorizontalBarComponent,
-    LoadingComponent
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,9 +63,11 @@ import { LoadingComponent } from './loading/loading.component';
     ReactiveFormsModule,
     NgApexchartsModule,
     HttpClientModule,
-
   ],
-  providers: [provideHttpClient(withInterceptors([TokenInterceptorService]))],
-  bootstrap: [AppComponent]
+  providers: [
+    provideHttpClient(withInterceptors([TokenInterceptorService])),
+    provideAnimationsAsync(),
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

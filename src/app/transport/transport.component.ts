@@ -63,10 +63,14 @@ export class TransportComponent {
             .updateRecord('public_transport', body, emissionID)
             .subscribe({
               next: (success) => {
-                if (success) this.publicform.nativeElement.reset();
+                if (success) {
+                  this.publicform.nativeElement.reset();
+                  this.factorsService.alertSubmitStatus('success');
+                }
               },
               error: (err) => {
                 console.log(err);
+                this.factorsService.alertSubmitStatus('error');
               },
             });
         }
@@ -96,10 +100,14 @@ export class TransportComponent {
             .updateRecord('private_transport', body, emissionID)
             .subscribe({
               next: (success) => {
-                if (success) this.privateform.nativeElement.reset();
+                if (success) {
+                  this.privateform.nativeElement.reset();
+                  this.factorsService.alertSubmitStatus('success');
+                }
               },
               error: (err) => {
                 console.log(err);
+                this.factorsService.alertSubmitStatus('error');
               },
             });
         }
