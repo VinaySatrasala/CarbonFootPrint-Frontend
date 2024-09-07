@@ -2,7 +2,7 @@
 <div class="d-container">
   <div class="sidebar">
     <div class="avatar-sec">
-      <img id="avatar" src="assets/robot.png" alt="" />
+      <img id="avatar" src="assets/woman.png" alt="" />
       <p>{{ username | uppercase }}</p>
       <p>{{ email }}</p>
     </div>
@@ -21,7 +21,7 @@
       <option *ngFor="let item of months" [value]="item">{{ item }}</option>
     </select>
 
-    <a style="--clr: #7808d0" class="button" (click)="viewInsights()">
+    <a style="--clr: rgb(87, 85, 85)" class="button" (click)="viewInsights()">
       <span class="button__icon-wrapper">
         <svg
           width="10"

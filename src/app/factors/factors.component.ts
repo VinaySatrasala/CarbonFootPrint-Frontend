@@ -14,9 +14,9 @@ export class FactorsComponent {
     | 'Domestic Fuel'
     | 'Transport'
   > = [
-    'Electricity',
     'Water',
     'Waste',
+    'Electricity',
     'Dietary Habits',
     'Domestic Fuel',
     'Transport',

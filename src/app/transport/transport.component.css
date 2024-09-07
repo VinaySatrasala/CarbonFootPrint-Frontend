@@ -48,13 +48,14 @@
 
 .btn.active {
   background-color: #28a745;
+  background-color: black;
   color: white;
 }
-
+/* 
 .btn:hover {
   background-color: #218838;
   color: white;
-}
+} */
 
 .card-body {
   text-align: left;
@@ -92,6 +93,7 @@
   border-radius: 8px;
   border: none;
   background-color: #28a745;
+  background-color: black;
   color: white;
   font-size: 1rem;
   cursor: pointer;
@@ -99,6 +101,6 @@
   margin-top: 20px;
 }
 
-.btn-submit:hover {
+/* .btn-submit:hover {
   background-color: #218838;
-}
+} */

@@ -204,6 +204,9 @@ export class DashboardComponent implements OnInit {
   }
 
   viewInsights(): void {
-    this.router.navigate(['/insights']);
+    this.router.navigate([
+      '/insights',
+      { year: this.selectedYear, month: this.selectedMonth },
+    ]);
   }
 }

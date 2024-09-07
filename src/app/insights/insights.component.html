@@ -1,22 +1,45 @@
 <app-header></app-header>
 
-<div class="d-flex justify-content-center align-items-center min-vh-100 p-3" >
-    <div *ngIf="loading" class="text-center">
-        <!-- <h3>Fetching... Please wait</h3> -->
-         <app-loading></app-loading>
-    </div>
-    <div class="card shadow-lg" style="width: 50rem;" *ngIf="!loading">
+<div class="main-container">
+  <h3 *ngIf="!loading && !error">
+    Your insights for {{ selectedMonth }} {{ selectedYear }}
+  </h3>
+  <div class="i-container">
+    <!-- <div class="card shadow-lg" style="width: 50rem" *ngIf="!loading">
         <div class="card-body">
-            <div *ngFor="let insight of insights" class="mb-4">
-                <h5 class="card-title">{{insight.category}}</h5>
-                <p class="card-text">{{insight.insight}}</p>
-            </div>
-            <div class="mt-4">
-                <h5 class="card-title">Overall</h5>
-                <p class="card-text">{{res.general}}</p>
-            </div>
+          <div *ngFor="let insight of insights" class="mb-4">
+            <h5 class="card-title">{{ insight.category }}</h5>
+            <p class="card-text">{{ insight.insight }}</p>
+          </div>
+          <div class="mt-4">
+            <h5 class="card-title">Overall</h5>
+            <p class="card-text">{{ res.general }}</p>
+          </div>
         </div>
-    </div>
-</div>
+      </div> -->
 
+    <div
+      *ngFor="let insight of insights"
+      class="i-card w-60 bg-gradient-to-l from-slate-300 to-slate-100 text-slate-600 border border-slate-300 grid grid-col-2 justify-center p-4 gap-4 rounded-lg shadow-md"
+    >
+      <div
+        class="col-span-2 text-lg font-bold capitalize rounded-md img-n-title"
+      >
+        {{ insight.category }}
+        <img src="{{ fieldImg[insight.jsonfield] }}" alt="" />
+        <!-- <p>{{insight.jsonfield}}</p> -->
+      </div>
+      <div class="col-span-2 rounded-md text-container" #content>
+        {{ insight.insight }}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loading && !error" class="text-center loading">
+    <!-- <h3>Fetching... Please wait</h3> -->
+    <app-loading></app-loading>
+  </div>
+  <div *ngIf="error" class="error">
+    <h2>No insights found for user in the selected time period</h2>
+  </div>
+</div>
 <app-footer></app-footer>

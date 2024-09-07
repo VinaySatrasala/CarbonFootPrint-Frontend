@@ -85,7 +85,7 @@
 }
 
 #avatar {
-  width: 50px;
+  width: 60px;
 }
 
 #dashboard-txt {
@@ -97,15 +97,13 @@
   gap: 50px;
   flex-direction: column;
   padding: 50px;
-  font-size: 70%;
+  font-size: 90%;
 }
-
 
 select {
   padding: 14px;
   background-color: #fff;
-  color: green;
-  border: green solid 1px;
+  border: black solid 1.6px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -160,13 +158,14 @@ select {
 
 /* From Uiverse.io by Creatlydev */
 .button {
+  /* color: #7808d0; */
   line-height: 1;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   font-size: 90%;
   gap: 0.75rem;
-  background-color: green;
+  background-color: rgb(87, 85, 85);
   color: #fff;
   border-radius: 10rem;
   font-weight: 600;
@@ -176,6 +175,7 @@ select {
   overflow: hidden;
   text-overflow: ellipsis;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .button__icon-wrapper {
@@ -214,27 +214,24 @@ select {
   transform: translate(0);
 }
 
-
-@media screen  and (max-width:800px) {
-  .d-container{
-      display: flex;
-      flex-direction: column;
-
+@media screen and (max-width: 800px) {
+  .d-container {
+    display: flex;
+    flex-direction: column;
   }
 
-  .d-container> .not-sidebar{
+  .d-container > .not-sidebar {
     margin-left: 30vw;
     margin-top: 70px;
   }
 
-  .sidebar{
-    height:100%;
+  .sidebar {
+    height: 100%;
     position: fixed;
     margin-top: 70px;
-
   }
 
-  .app-header{
+  .app-header {
     position: fixed;
     width: 100vw;
     z-index: 1;
