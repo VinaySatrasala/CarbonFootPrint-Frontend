@@ -1,20 +1,163 @@
 <div id="top" class="maincontainer">
-  <app-header></app-header>
+  <header id="home" class="header">
+    <div class="header-top navbar navbar-expand-lg">
+      <div class="container">
+        <a [routerLink]="['']" class="navbar-brand logo"> Carbon Sense </a>
+        <div class="d-flex align-items-center">
+          <button
+            class="btn btn-signin"
+            id="logout-btn"
+            aria-label="sign in"
+            (click)="signin()"
+          >
+          <a href="signin">
+            Signin
+          </a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
 </div>
 
 <div class="d-flex main-div">
-  <div class="p-6 left">
-    <h1 class="page-heading fw-bold">
-      HOW BIG IS YOUR ENVIRONMENTAL FOOTPRINT?
-    </h1>
-    <p class="page-content fw-semibold">
-      Our world is in crisis - from climate change to the pollution in our
-      oceans and devastation of our forests. It's up to all of us to fix it.
-      Take your first step with our UK based environmental footprint calculator.
-    </p>
-    <button class="btn btn-dark" (click)="signIn()">Get Started</button>
+  <div class="p-6 left mt-4">
+    <h1 class="page-heading fw-bold">HOW BIG IS YOUR ENVIRONMENTAL FOOTPRINT?</h1>
+    <p class="page-content fw-semibold mb-4">Our world is in crisis - from climate change to the pollution in our oceans and devastation of our forests. It's up to all of us to fix it. Take your first step with our UK based environmental footprint calculator.</p>
+    <button class="btn btn-dark">Get Started</button>
   </div>
   <div class="right">
-    <img src="assets/landing_image.jpg" alt="" />
+    <img src="assets/landing_image.jpg" alt="">
   </div>
 </div>
+
+<div class="section2">
+  <h1 class="section-heading fw-bold">HOW WE CALCULATE FOOTPRINT?</h1>
+  <hr>
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Electricity Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card custom-card">
+          <div class="card-icon">
+            <img src="assets/light-bulb.gif" alt="Electricity Icon" class="card-img">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Electricity</h5>
+            <p class="card-text">
+              Electricity emissions arise from the consumption of electricity, often generated from fossil fuels such as coal and natural gas. While renewable energy sources such as solar and wind are becoming more common, a large portion of global electricity still relies on non-renewable sources. Reducing electricity usage or switching to greener alternatives can significantly reduce household carbon emissions.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Transport Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card custom-card">
+          <div class="card-icon">
+            <img src="assets/mini-car.gif" alt="Transport Icon" class="card-img card-img-trans">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Transport</h5>
+            <p class="card-text">
+              Transport emissions arise from personal and public transportation, including cars, buses, trains, and airplanes. The use of fossil fuels in vehicles contributes heavily to carbon emissions, with air travel being one of the most carbon-intensive activities. Opting for public transport, carpooling, or using electric vehicles can help reduce the carbon footprint associated with transportation.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Waste Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card custom-card">
+          <div class="card-icon">
+            <img src="assets/trash-bin.gif" alt="Waste Icon" class="card-img">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Waste</h5>
+            <p class="card-text">
+              Waste management contributes to carbon emissions through the disposal and processing of waste materials. Non-recyclable waste often ends up in landfills, where it decomposes and produces methane, a potent greenhouse gas. Recycling materials such as paper, plastics, and metals can greatly reduce the amount of waste sent to landfills and the emissions produced in the process.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Dietary Habits Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card custom-card">
+          <div class="card-icon">
+            <img src="assets/check.gif" alt="Dietary Habits Icon" class="card-img">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Dietary Habits</h5>
+            <p class="card-text">
+              Dietary habits, particularly the consumption of meat and dairy products, are significant contributors to global carbon emissions. Livestock farming produces large amounts of methane and requires extensive resources like water and feed. Reducing meat consumption, especially beef, and opting for plant-based diets can significantly reduce an individual's carbon footprint.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- LPG Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card custom-card">
+          <div class="card-icon">
+            <img src="assets/biogas.gif" alt="LPG Icon" class="card-img">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">LPG & FIREWOOD</h5>
+            <p class="card-text">
+              Liquefied Petroleum Gas (LPG) is commonly used for cooking and heating in households. Although it produces fewer carbon emissions compared to coal and oil, it is still a fossil fuel that contributes to greenhouse gas emissions. Switching to electric or solar-powered cooking appliances can further reduce carbon emissions from household energy use.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Water Usage Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card custom-card">
+          <div class="card-icon">
+            <img src="assets/tap.gif" alt="Water Usage Icon" class="card-img">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Water Usage</h5>
+            <p class="card-text">
+              Water usage, particularly in households, contributes indirectly to carbon emissions through the energy required for heating, pumping, and treating water. Conserving water, using energy-efficient appliances, and reducing water waste can help lower both water and energy usage, reducing an individual's overall carbon footprint.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------- Footer ------------>
+<footer class="footer-bs">
+  <div class="row">
+      <!-- Footer Brand -->
+      <div class="col-md-4 footer-brand">
+          <h2>Carbon Sense</h2>
+          <p>Helping you track and reduce your carbon footprint with personalized insights.</p>
+      </div>
+      
+      <!-- Footer Navigation -->
+      <div class="col-md-4 footer-nav">
+          <h4>Quick Links</h4>
+          <ul class="list">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Dashboard</a></li>
+              <li><a href="#">Insights</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+          </ul>
+      </div>
+      
+      <!-- Footer Social Media Links -->
+      <div class="col-md-4 footer-social">
+          <h4>Follow Us</h4>
+          <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">LinkedIn</a></li>
+          </ul>
+      </div>
+  </div>
+</footer>

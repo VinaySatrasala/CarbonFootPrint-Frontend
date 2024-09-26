@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: '', component: HomeComponent },
-  { path: 'factors', component: FactorsComponent, canActivate: [authGuard] },
+  { path: 'factors', component: FactorsComponent,  },
   { path: 'water', component: WaterComponent, canActivate: [authGuard] },
   {
     path: 'electricity',

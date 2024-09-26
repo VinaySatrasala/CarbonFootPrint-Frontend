@@ -11,6 +11,6 @@ export class LandingComponent {
   constructor(private router: Router) {}
 
   signIn() {
-    this.router.navigate(['/factors']);
+    this.router.navigate(['/signin']);
   }
 }
