@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./insights.component.css'],
 })
 export class InsightsComponent implements OnInit {
-  private readonly API_KEY = 'AIzaSyCDjvlJPxyoiPHTkHzrlRzd2jXHEWyHQUc';
+  private readonly API_KEY = '<put your api key>';
   private genAI: GoogleGenerativeAI;
   res: any = 'Loading...';
   insights: any = [];
